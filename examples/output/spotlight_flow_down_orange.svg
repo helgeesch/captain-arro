@@ -10,7 +10,7 @@
             attributeName="gradientTransform"
             type="translate"
             from="0 -150"
-            to="0 300"
+            to="0 75.0"
             dur="7.50s"
             repeatCount="indefinite"/>
           <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.1"/>

@@ -1,8 +1,8 @@
 
-        <svg width="180" height="70" viewBox="0 0 180 70" xmlns="http://www.w3.org/2000/svg">
+        <svg width="180" height="120" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="36" y="0" width="108" height="70"/>
+              <rect x="36" y="0" width="108" height="120"/>
             </clipPath>
             
         <linearGradient id="spotlightGradient" x1="0" y1="0" x2="180" y2="0" gradientUnits="userSpaceOnUse">
@@ -10,14 +10,14 @@
             attributeName="gradientTransform"
             type="translate"
             from="-180 0"
-            to="360 0"
+            to="90.0 0"
             dur="4.50s"
             repeatCount="indefinite"/>
-          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
-          <stop offset="30.0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+          <stop offset="35.0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
           <stop offset="50%" stop-color="#8b5cf6" stop-opacity="1"/>
-          <stop offset="70.0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
-          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+          <stop offset="65.0%" stop-color="#8b5cf6" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.5"/>
         </linearGradient>
         
           </defs>
@@ -45,15 +45,15 @@
         
           <g clip-path="url(#arrowClip)">
                 <g class="arrow">
-      <polyline points="52,27 74,35 52,43"/>
+      <polyline points="52,45 74,60 52,75"/>
     </g>
     
     <g class="arrow">
-      <polyline points="79,27 101,35 79,43"/>
+      <polyline points="79,45 101,60 79,75"/>
     </g>
     
     <g class="arrow">
-      <polyline points="106,27 128,35 106,43"/>
+      <polyline points="106,45 128,60 106,75"/>
     </g>
           </g>
         </svg>

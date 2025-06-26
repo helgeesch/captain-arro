@@ -46,10 +46,13 @@ from captain_arro import MovingFlowArrowGenerator
 # Blue arrows moving right
 generator = MovingFlowArrowGenerator(
     direction="right",
+    stroke_width=8,
     color="#3b82f6", 
-    num_arrows=3,
+    num_arrows=6,
     width=150,
-    height=60
+    height=100,
+    speed=25,
+    animation="ease-in-out"
 )
 ```
 
@@ -64,10 +67,14 @@ from captain_arro import SpotlightFlowArrowGenerator
 
 # Purple spotlight effect
 generator = SpotlightFlowArrowGenerator(
-    direction="right",
-    color="#8b5cf6",
-    spotlight_size=0.4,
-    dim_opacity=0.15
+        direction="right",
+        color="#8b5cf6",
+        num_arrows=3,
+        width=180,
+        height=120,
+        speed=40.0,
+        spotlight_size=0.3,
+        dim_opacity=0.5
 )
 ```
 
@@ -82,11 +89,14 @@ from captain_arro import BouncingSpreadArrowGenerator
 
 # Teal arrows spreading horizontally  
 generator = BouncingSpreadArrowGenerator(
-    direction="horizontal",
-    color="#14b8a6",
-    num_arrows=6,
-    width=250,
-    height=80
+        direction="horizontal",
+        color="#14b8a6",
+        num_arrows=4,
+        width=250,
+        height=400,
+        speed=15.0,
+        animation="ease-in-out",
+        center_gap_ratio=0.3,
 )
 ```
 
@@ -101,10 +111,16 @@ from captain_arro import SpotlightSpreadArrowGenerator
 
 # Indigo spotlight spreading horizontally
 generator = SpotlightSpreadArrowGenerator(
-    direction="horizontal", 
-    color="#6366f1",
-    num_arrows=8,
-    spotlight_size=0.25
+        direction="horizontal",
+        color="#6366f1",
+        stroke_width=6,
+        num_arrows=8,
+        width=300,
+        height=300,
+        speed=50.0,
+        spotlight_size=0.25,
+        dim_opacity=0.5,
+        center_gap_ratio=0.1
 )
 ```
 
@@ -134,10 +150,11 @@ All generators support these base parameters:
 
 ### Spotlight Parameters
 
-| Parameter | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `spotlight_size` | `float` | `0.3` | Size of spotlight effect (0.1-1.0) |
-| `dim_opacity` | `float` | `0.2` | Opacity of dimmed areas (0.0-1.0) |
+| Parameter                         | Type | Default | Description                                           |
+|-----------------------------------|------|---------|-------------------------------------------------------|
+| `spotlight_size`                  | `float` | `0.3`   | Size of spotlight effect (0.1-1.0)                    |
+| `spotlight_path_extension_factor` | `float` | `1.0`   | Factor by which the path of the spotlight is extended |
+| `dim_opacity`                     | `float` | `0.2`   | Opacity of dimmed areas (0.0-1.0)                     |
 
 ### Spread Arrow Parameters  
 

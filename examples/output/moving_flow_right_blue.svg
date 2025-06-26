@@ -1,8 +1,8 @@
 
-        <svg width="150" height="60" viewBox="0 0 150 60" xmlns="http://www.w3.org/2000/svg">
+        <svg width="150" height="100" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="30" y="0" width="90" height="60"/>
+              <rect x="30" y="0" width="90" height="100"/>
             </clipPath>
             
           </defs>
@@ -10,7 +10,7 @@
           <style>
             .arrow {
               stroke: #3b82f6;
-              stroke-width: 15;
+              stroke-width: 8;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -26,6 +26,18 @@
     
     .arrow3 {
       animation: flow3 6.00s ease-in-out infinite;
+    }
+    
+    .arrow4 {
+      animation: flow4 6.00s ease-in-out infinite;
+    }
+    
+    .arrow5 {
+      animation: flow5 6.00s ease-in-out infinite;
+    }
+    
+    .arrow6 {
+      animation: flow6 6.00s ease-in-out infinite;
     }
             
             
@@ -82,19 +94,85 @@
           }
         }
         
+    
+        @keyframes flow4 {
+          0% {
+            transform: translateX(-75px);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(75px);
+            opacity: 0;
+          }
+        }
+        
+    
+        @keyframes flow5 {
+          0% {
+            transform: translateX(-75px);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(75px);
+            opacity: 0;
+          }
+        }
+        
+    
+        @keyframes flow6 {
+          0% {
+            transform: translateX(-75px);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(75px);
+            opacity: 0;
+          }
+        }
+        
           </style>
         
           <g clip-path="url(#arrowClip)">
                 <g class="arrow arrow1">
-      <polyline points="57,15 93,30 57,45"/>
+      <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow arrow2" style="animation-delay: -2.00s;">
-      <polyline points="57,15 93,30 57,45"/>
+    <g class="arrow arrow2" style="animation-delay: -1.00s;">
+      <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow arrow3" style="animation-delay: -4.00s;">
-      <polyline points="57,15 93,30 57,45"/>
+    <g class="arrow arrow3" style="animation-delay: -2.00s;">
+      <polyline points="57,25 93,50 57,75"/>
+    </g>
+    
+    <g class="arrow arrow4" style="animation-delay: -3.00s;">
+      <polyline points="57,25 93,50 57,75"/>
+    </g>
+    
+    <g class="arrow arrow5" style="animation-delay: -4.00s;">
+      <polyline points="57,25 93,50 57,75"/>
+    </g>
+    
+    <g class="arrow arrow6" style="animation-delay: -5.00s;">
+      <polyline points="57,25 93,50 57,75"/>
     </g>
           </g>
         </svg>

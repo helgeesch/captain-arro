@@ -13,6 +13,7 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             direction: SPREAD_DIRECTIONS = "horizontal",
             num_arrows: int = 4,
             spotlight_size: float = 0.3,
+            spotlight_path_extension_factor: float = 0.5,
             dim_opacity: float = 0.2,
             center_gap_ratio: float = 0.2,
     ):
@@ -27,6 +28,7 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         self.direction = direction.lower()
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
         self.dim_opacity = max(0.0, min(1.0, dim_opacity))
+        self.spotlight_path_extension_factor = spotlight_path_extension_factor
         self.center_gap_ratio = max(0.1, min(0.4, center_gap_ratio))
 
     def generate_svg(self) -> str:

@@ -13,6 +13,7 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
             direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 3,
             spotlight_size: float = 0.3,
+            spotlight_path_extension_factor: float = 0.5,
             dim_opacity: float = 0.2,
     ):
         super().__init__(
@@ -25,6 +26,7 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         )
         self.direction = direction.lower()
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
+        self.spotlight_path_extension_factor = spotlight_path_extension_factor
         self.dim_opacity = max(0.0, min(1.0, dim_opacity))
 
     def generate_svg(self) -> str:
@@ -68,17 +70,17 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
             gradient_attrs = f'x1="0" y1="0" x2="0" y2="{self.height}" gradientUnits="userSpaceOnUse"'
             if self.direction == "down":
                 from_transform = f"0 -{self.height}"
-                to_transform = f"0 {self.height * 2}"
+                to_transform = f"0 {self.height * self.spotlight_path_extension_factor}"
             else:  # up
-                from_transform = f"0 {self.height * 2}"
+                from_transform = f"0 {self.height * self.spotlight_path_extension_factor}"
                 to_transform = f"0 -{self.height}"
         else:
             gradient_attrs = f'x1="0" y1="0" x2="{self.width}" y2="0" gradientUnits="userSpaceOnUse"'
             if self.direction == "right":
                 from_transform = f"-{self.width} 0"
-                to_transform = f"{self.width * 2} 0"
+                to_transform = f"{self.width * self.spotlight_path_extension_factor} 0"
             else:  # left
-                from_transform = f"{self.width * 2} 0"
+                from_transform = f"{self.width * self.spotlight_path_extension_factor} 0"
                 to_transform = f"-{self.width} 0"
 
         spotlight_percent = self.spotlight_size * 100

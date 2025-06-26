@@ -1,8 +1,8 @@
 
-        <svg width="250" height="80" viewBox="0 0 250 80" xmlns="http://www.w3.org/2000/svg">
+        <svg width="250" height="400" viewBox="0 0 250 400" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="25" y="0" width="200" height="80"/>
+              <rect x="25" y="0" width="200" height="400"/>
             </clipPath>
           </defs>
 
@@ -45,26 +45,20 @@
 
           <g clip-path="url(#arrowClip)">
             <g class="arrow group-left">
-      <g style="transform: translate(47.0px, 40px)">
-        <polyline points="12,-4 -12,0 12,4"/>
+      <g style="transform: translate(52.0px, 200px)">
+        <polyline points="12,-20 -12,0 12,20"/>
       </g>
-      <g style="transform: translate(63.0px, 40px)">
-        <polyline points="12,-4 -12,0 12,4"/>
-      </g>
-      <g style="transform: translate(79.0px, 40px)">
-        <polyline points="12,-4 -12,0 12,4"/>
+      <g style="transform: translate(73.0px, 200px)">
+        <polyline points="12,-20 -12,0 12,20"/>
       </g>
     </g>
     
     <g class="arrow group-right">
-      <g style="transform: translate(169.0px, 40px)">
-        <polyline points="-12,-4 12,0 -12,4"/>
+      <g style="transform: translate(174.0px, 200px)">
+        <polyline points="-12,-20 12,0 -12,20"/>
       </g>
-      <g style="transform: translate(185.0px, 40px)">
-        <polyline points="-12,-4 12,0 -12,4"/>
-      </g>
-      <g style="transform: translate(201.0px, 40px)">
-        <polyline points="-12,-4 12,0 -12,4"/>
+      <g style="transform: translate(195.0px, 200px)">
+        <polyline points="-12,-20 12,0 -12,20"/>
       </g>
     </g>
           </g>

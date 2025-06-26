@@ -41,10 +41,11 @@ def generate_moving_flow_examples(output_dir):
             "name": "moving_flow_right_blue",
             "params": {
                 "direction": "right",
+                "stroke_width": 8,
                 "color": "#3b82f6",
-                "num_arrows": 3,
+                "num_arrows": 6,
                 "width": 150,
-                "height": 60,
+                "height": 100,
                 "speed": 25.0,
                 "animation": "ease-in-out"
             }
@@ -98,10 +99,10 @@ def generate_spotlight_flow_examples(output_dir):
                 "color": "#8b5cf6",
                 "num_arrows": 3,
                 "width": 180,
-                "height": 70,
+                "height": 120,
                 "speed": 40.0,
-                "spotlight_size": 0.4,
-                "dim_opacity": 0.15
+                "spotlight_size": 0.3,
+                "dim_opacity": 0.5,
             }
         },
         {
@@ -140,12 +141,12 @@ def generate_bouncing_spread_examples(output_dir):
             "params": {
                 "direction": "horizontal",
                 "color": "#14b8a6",
-                "num_arrows": 6,
+                "num_arrows": 4,
                 "width": 250,
-                "height": 80,
+                "height": 400,
                 "speed": 15.0,
                 "animation": "ease-in-out",
-                "center_gap_ratio": 0.3
+                "center_gap_ratio": 0.3,
             }
         },
         {
@@ -184,13 +185,14 @@ def generate_spotlight_spread_examples(output_dir):
             "params": {
                 "direction": "horizontal",
                 "color": "#6366f1",
+                "stroke_width": 6,
                 "num_arrows": 8,
                 "width": 300,
-                "height": 60,
+                "height": 300,
                 "speed": 50.0,
                 "spotlight_size": 0.25,
-                "dim_opacity": 0.2,
-                "center_gap_ratio": 0.2
+                "dim_opacity": 0.5,
+                "center_gap_ratio": 0.1
             }
         },
         {
