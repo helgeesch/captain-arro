@@ -2,7 +2,7 @@ from captain_arro.generators.base import AnimatedArrowGeneratorBase
 from captain_arro.constants import ANIMATION_TYPES, SPREAD_DIRECTIONS
 
 
-class MovingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
+class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     def __init__(
             self,
             color: str = "#2563eb",
@@ -274,11 +274,11 @@ class MovingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
 
 
 if __name__ == "__main__":
-    generator = MovingSpreadArrowGenerator()
+    generator = BouncingSpreadArrowGenerator()
 
-    print("Generated default moving spread arrow:")
+    print("Generated default bouncing spread arrow:")
     print(generator.generate_svg())
-    generator.save_to_file("_tmp/moving_spread_arrow_default.svg")
+    generator.save_to_file("_tmp/bouncing_spread_arrow_default.svg")
 
     configurations = [
         {"direction": "horizontal", "color": "#3b82f6", "num_arrows": 1, "width": 300, "height": 300,
@@ -292,7 +292,7 @@ if __name__ == "__main__":
     ]
 
     for config in configurations:
-        gen = MovingSpreadArrowGenerator(**config)
-        file = f"_tmp/moving_spread_arrow_{config['direction']}_{config['num_arrows']}.svg"
+        gen = BouncingSpreadArrowGenerator(**config)
+        file = f"_tmp/bouncing_spread_arrow_{config['direction']}_{config['num_arrows']}.svg"
         gen.save_to_file(file)
         print(f"Created {file} with {config}")
