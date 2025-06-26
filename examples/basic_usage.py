@@ -160,8 +160,22 @@ def generate_bouncing_spread_examples(output_dir):
                 "speed": 20.0,
                 "animation": "ease",
                 "stroke_width": 4
+            },
+        },
+        {
+            "name": "bouncing_spread_horizontal_red",
+            "params": {
+                "direction": "horizontal",
+                "color": "red",
+                "num_arrows": 8,
+                "width": 400,
+                "height": 200,
+                "speed": 20.0,
+                "animation": "ease",
+                "stroke_width": 8,
+                "center_gap_ratio": 1.5,
             }
-        }
+        },
     ]
     
     for example in examples:

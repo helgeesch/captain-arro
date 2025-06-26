@@ -196,20 +196,63 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
 
         return "\n    \n".join(elements)
 
+    def _calculate_arrow_layout(self):
+        """SIMPLE constraint-based layout - work backwards from constraints"""
+        arrows_per_side = self.num_arrows // 2
+        
+        if self.direction == "horizontal":
+            # 1. Arrow size: use most of perpendicular space (height)
+            arrow_height = int(self.height * 0.8)  # 80% of height
+            
+            # 2. Center gap: fixed ratio 
+            center_gap = int(self.width * self.center_gap_ratio)
+            
+            # 3. Available space per side
+            available_width_per_side = (self.width - center_gap) // 2
+            
+            # 4. Arrow width: constrained by space per arrow
+            arrow_width = available_width_per_side // max(arrows_per_side, 1)
+            
+            return {
+                "arrow_width": arrow_width,
+                "arrow_height": arrow_height,
+                "center_gap": center_gap,
+                "available_width_per_side": available_width_per_side
+            }
+        else:
+            # 1. Arrow size: use most of perpendicular space (width)
+            arrow_width = int(self.width * 0.8)  # 80% of width
+            
+            # 2. Center gap: fixed ratio 
+            center_gap = int(self.height * self.center_gap_ratio)
+            
+            # 3. Available space per side
+            available_height_per_side = (self.height - center_gap) // 2
+            
+            # 4. Arrow height: constrained by space per arrow
+            arrow_height = available_height_per_side // max(arrows_per_side, 1)
+            
+            return {
+                "arrow_width": arrow_width,
+                "arrow_height": arrow_height,
+                "center_gap": center_gap,
+                "available_height_per_side": available_height_per_side
+            }
+
     def _get_left_arrow_positions(self) -> list[dict[str, int]]:
         arrows_per_side = self.num_arrows // 2
         positions = []
 
-        available_width = self.width - 2 * (self.width // 8)
-        center_gap = available_width * self.center_gap_ratio
-        side_width = (available_width - center_gap) // 2
-
-        spacing = side_width // (arrows_per_side + 1) if arrows_per_side > 1 else side_width // 2
-        start_x = self.width // 8
-
-        for i in range(arrows_per_side):
-            x = start_x + (i + 1) * spacing
-            positions.append({"x": x, "y": self.height // 2})
+        if self.direction == "horizontal":
+            layout = self._calculate_arrow_layout()
+            
+            center_x = self.width // 2
+            left_edge = center_x - layout["center_gap"] // 2
+            
+            for i in range(arrows_per_side):
+                # Outermost arrow tip exactly at edge, work backwards
+                arrow_center = left_edge - (layout["arrow_width"] // 2) - i * layout["arrow_width"]
+                positions.append({"x": int(arrow_center), "y": self.height // 2})
 
         return positions
 
@@ -217,16 +260,16 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         arrows_per_side = self.num_arrows // 2
         positions = []
 
-        available_width = self.width - 2 * (self.width // 8)
-        center_gap = available_width * self.center_gap_ratio
-        side_width = (available_width - center_gap) // 2
-
-        spacing = side_width // (arrows_per_side + 1) if arrows_per_side > 1 else side_width // 2
-        start_x = self.width // 2 + (available_width * self.center_gap_ratio) // 2
-
-        for i in range(arrows_per_side):
-            x = start_x + (i + 1) * spacing
-            positions.append({"x": x, "y": self.height // 2})
+        if self.direction == "horizontal":
+            layout = self._calculate_arrow_layout()
+            
+            center_x = self.width // 2
+            right_edge = center_x + layout["center_gap"] // 2
+            
+            for i in range(arrows_per_side):
+                # Outermost arrow tip exactly at edge, work backwards
+                arrow_center = right_edge + (layout["arrow_width"] // 2) + i * layout["arrow_width"]
+                positions.append({"x": int(arrow_center), "y": self.height // 2})
 
         return positions
 
@@ -234,16 +277,16 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         arrows_per_side = self.num_arrows // 2
         positions = []
 
-        available_height = self.height - 2 * (self.height // 8)
-        center_gap = available_height * self.center_gap_ratio
-        side_height = (available_height - center_gap) // 2
-
-        spacing = side_height // (arrows_per_side + 1) if arrows_per_side > 1 else side_height // 2
-        start_y = self.height // 8
-
-        for i in range(arrows_per_side):
-            y = start_y + (i + 1) * spacing
-            positions.append({"x": self.width // 2, "y": y})
+        if self.direction == "vertical":
+            layout = self._calculate_arrow_layout()
+            
+            center_y = self.height // 2
+            top_edge = center_y - layout["center_gap"] // 2
+            
+            for i in range(arrows_per_side):
+                # Outermost arrow tip exactly at edge, work backwards
+                arrow_center = top_edge - (layout["arrow_height"] // 2) - i * layout["arrow_height"]
+                positions.append({"x": self.width // 2, "y": int(arrow_center)})
 
         return positions
 
@@ -251,55 +294,50 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         arrows_per_side = self.num_arrows // 2
         positions = []
 
-        available_height = self.height - 2 * (self.height // 8)
-        center_gap = available_height * self.center_gap_ratio
-        side_height = (available_height - center_gap) // 2
-
-        spacing = side_height // (arrows_per_side + 1) if arrows_per_side > 1 else side_height // 2
-        start_y = self.height // 2 + (available_height * self.center_gap_ratio) // 2
-
-        for i in range(arrows_per_side):
-            y = start_y + (i + 1) * spacing
-            positions.append({"x": self.width // 2, "y": y})
+        if self.direction == "vertical":
+            layout = self._calculate_arrow_layout()
+            
+            center_y = self.height // 2
+            bottom_edge = center_y + layout["center_gap"] // 2
+            
+            for i in range(arrows_per_side):
+                # Outermost arrow tip exactly at edge, work backwards
+                arrow_center = bottom_edge + (layout["arrow_height"] // 2) + i * layout["arrow_height"]
+                positions.append({"x": self.width // 2, "y": int(arrow_center)})
 
         return positions
 
     def _get_clip_bounds(self) -> dict[str, int]:
-        if self.direction == "vertical":
-            margin_y = self.height // 10
-            return {
-                "x": 0,
-                "y": margin_y,
-                "width": self.width,
-                "height": self.height - 2 * margin_y
-            }
-        else:
-            margin_x = self.width // 10
-            return {
-                "x": margin_x,
-                "y": 0,
-                "width": self.width - 2 * margin_x,
-                "height": self.height
-            }
+        # Use full canvas area - no margins
+        return {
+            "x": 0,
+            "y": 0,
+            "width": self.width,
+            "height": self.height
+        }
 
     def _get_left_arrow_points(self) -> str:
-        offset_x = self.width // 20
-        offset_y = self.height // 20
+        layout = self._calculate_arrow_layout()
+        offset_x = layout["arrow_width"] // 2
+        offset_y = layout["arrow_height"] // 2
         return f"{offset_x},{-offset_y} {-offset_x},0 {offset_x},{offset_y}"
 
     def _get_right_arrow_points(self) -> str:
-        offset_x = self.width // 20
-        offset_y = self.height // 20
+        layout = self._calculate_arrow_layout()
+        offset_x = layout["arrow_width"] // 2
+        offset_y = layout["arrow_height"] // 2
         return f"{-offset_x},{-offset_y} {offset_x},0 {-offset_x},{offset_y}"
 
     def _get_up_arrow_points(self) -> str:
-        offset_x = self.width // 20
-        offset_y = self.height // 20
+        layout = self._calculate_arrow_layout()
+        offset_x = layout["arrow_width"] // 2
+        offset_y = layout["arrow_height"] // 2
         return f"{-offset_x},{offset_y} 0,{-offset_y} {offset_x},{offset_y}"
 
     def _get_down_arrow_points(self) -> str:
-        offset_x = self.width // 20
-        offset_y = self.height // 20
+        layout = self._calculate_arrow_layout()
+        offset_x = layout["arrow_width"] // 2
+        offset_y = layout["arrow_height"] // 2
         return f"{-offset_x},{-offset_y} 0,{offset_y} {offset_x},{-offset_y}"
 
     def _calculate_animation_duration(self) -> float:

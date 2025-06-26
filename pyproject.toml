@@ -9,10 +9,10 @@ description = "Animated SVG arrow generators for web interfaces"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
-    {name = "Helge Esch", email = "helge@example.com"}
+    {name = "Helge Esch"}
 ]
 maintainers = [
-    {name = "Helge Esch", email = "helge@example.com"}
+    {name = "Helge Esch"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",

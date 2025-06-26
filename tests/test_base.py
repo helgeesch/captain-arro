@@ -95,10 +95,10 @@ class TestAnimatedArrowGeneratorBase:
         generator = ConcreteArrowGenerator(width=100, height=200)
         bounds = generator._get_clip_bounds()
         
-        assert bounds["x"] == 10  # width // 10
-        assert bounds["y"] == 20  # height // 10
-        assert bounds["width"] == 80  # width - 2 * margin
-        assert bounds["height"] == 160  # height - 2 * margin
+        assert bounds["x"] == 0  # no margin
+        assert bounds["y"] == 0  # no margin
+        assert bounds["width"] == 100  # full width
+        assert bounds["height"] == 200  # full height
 
     def test_save_to_file(self, tmp_path):
         """Test saving SVG to file."""

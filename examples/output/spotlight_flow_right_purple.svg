@@ -2,7 +2,7 @@
         <svg width="180" height="120" viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="36" y="0" width="108" height="120"/>
+              <rect x="0" y="0" width="180" height="120"/>
             </clipPath>
             
         <linearGradient id="spotlightGradient" x1="0" y1="0" x2="180" y2="0" gradientUnits="userSpaceOnUse">
@@ -45,15 +45,15 @@
         
           <g clip-path="url(#arrowClip)">
                 <g class="arrow">
-      <polyline points="52,45 74,60 52,75"/>
+      <polyline points="41,30 85,60 41,90"/>
     </g>
     
     <g class="arrow">
-      <polyline points="79,45 101,60 79,75"/>
+      <polyline points="68,30 112,60 68,90"/>
     </g>
     
     <g class="arrow">
-      <polyline points="106,45 128,60 106,75"/>
+      <polyline points="95,30 139,60 95,90"/>
     </g>
           </g>
         </svg>

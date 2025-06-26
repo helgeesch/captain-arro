@@ -2,7 +2,7 @@
         <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="30" y="0" width="240" height="300"/>
+              <rect x="0" y="0" width="300" height="300"/>
             </clipPath>
             
         <linearGradient id="spotlightGradientLeft" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
@@ -71,36 +71,36 @@
           </style>
 
           <g clip-path="url(#arrowClip)">
-                <g class="arrow-left" style="transform: translate(57.0px, 150px)">
-      <polyline points="15,-15 -15,0 15,15"/>
+                <g class="arrow-left" style="transform: translate(119px, 150px)">
+      <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(77.0px, 150px)">
-      <polyline points="15,-15 -15,0 15,15"/>
+    <g class="arrow-left" style="transform: translate(86px, 150px)">
+      <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(97.0px, 150px)">
-      <polyline points="15,-15 -15,0 15,15"/>
+    <g class="arrow-left" style="transform: translate(53px, 150px)">
+      <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(117.0px, 150px)">
-      <polyline points="15,-15 -15,0 15,15"/>
+    <g class="arrow-left" style="transform: translate(20px, 150px)">
+      <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(181.0px, 150px)">
-      <polyline points="-15,-15 15,0 -15,15"/>
+    <g class="arrow-right" style="transform: translate(181px, 150px)">
+      <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(201.0px, 150px)">
-      <polyline points="-15,-15 15,0 -15,15"/>
+    <g class="arrow-right" style="transform: translate(214px, 150px)">
+      <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(221.0px, 150px)">
-      <polyline points="-15,-15 15,0 -15,15"/>
+    <g class="arrow-right" style="transform: translate(247px, 150px)">
+      <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(241.0px, 150px)">
-      <polyline points="-15,-15 15,0 -15,15"/>
+    <g class="arrow-right" style="transform: translate(280px, 150px)">
+      <polyline points="-16,-120 16,0 -16,120"/>
     </g>
           </g>
         </svg>

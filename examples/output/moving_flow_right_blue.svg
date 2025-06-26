@@ -2,7 +2,7 @@
         <svg width="150" height="100" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="30" y="0" width="90" height="100"/>
+              <rect x="0" y="0" width="150" height="100"/>
             </clipPath>
             
           </defs>

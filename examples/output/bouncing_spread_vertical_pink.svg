@@ -2,7 +2,7 @@
         <svg width="100" height="200" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="0" y="20" width="100" height="160"/>
+              <rect x="0" y="0" width="100" height="200"/>
             </clipPath>
           </defs>
 
@@ -45,20 +45,20 @@
 
           <g clip-path="url(#arrowClip)">
             <g class="arrow group-top">
-      <g style="transform: translate(50px, 45.0px)">
-        <polyline points="-5,10 0,-10 5,10"/>
+      <g style="transform: translate(50px, 60px)">
+        <polyline points="-40,20 0,-20 40,20"/>
       </g>
-      <g style="transform: translate(50px, 65.0px)">
-        <polyline points="-5,10 0,-10 5,10"/>
+      <g style="transform: translate(50px, 20px)">
+        <polyline points="-40,20 0,-20 40,20"/>
       </g>
     </g>
     
     <g class="arrow group-bottom">
-      <g style="transform: translate(50px, 135.0px)">
-        <polyline points="-5,-10 0,10 5,-10"/>
+      <g style="transform: translate(50px, 140px)">
+        <polyline points="-40,-20 0,20 40,-20"/>
       </g>
-      <g style="transform: translate(50px, 155.0px)">
-        <polyline points="-5,-10 0,10 5,-10"/>
+      <g style="transform: translate(50px, 180px)">
+        <polyline points="-40,-20 0,20 40,-20"/>
       </g>
     </g>
           </g>

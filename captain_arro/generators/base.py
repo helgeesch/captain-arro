@@ -76,14 +76,12 @@ class AnimatedArrowGeneratorBase(ABC):
     
     def _get_clip_bounds(self) -> Dict[str, int]:
         """Get the clipping bounds for the SVG."""
-        # Default implementation - can be overridden by subclasses
-        margin_x = self.width // 10
-        margin_y = self.height // 10
+        # Use full canvas area - no margins
         return {
-            "x": margin_x,
-            "y": margin_y,
-            "width": self.width - 2 * margin_x,
-            "height": self.height - 2 * margin_y
+            "x": 0,
+            "y": 0,
+            "width": self.width,
+            "height": self.height
         }
     
     def save_to_file(self, file_path: str) -> None:

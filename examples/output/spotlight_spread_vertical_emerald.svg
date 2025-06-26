@@ -2,7 +2,7 @@
         <svg width="80" height="250" viewBox="0 0 80 250" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="0" y="25" width="80" height="200"/>
+              <rect x="0" y="0" width="80" height="250"/>
             </clipPath>
             
         <linearGradient id="spotlightGradientTop" x1="0" y1="0" x2="0" y2="250" gradientUnits="userSpaceOnUse">
@@ -71,28 +71,28 @@
           </style>
 
           <g clip-path="url(#arrowClip)">
-                <g class="arrow-top" style="transform: translate(40px, 49.0px)">
-      <polyline points="-4,12 0,-12 4,12"/>
+                <g class="arrow-top" style="transform: translate(40px, 84px)">
+      <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-top" style="transform: translate(40px, 67.0px)">
-      <polyline points="-4,12 0,-12 4,12"/>
+    <g class="arrow-top" style="transform: translate(40px, 51px)">
+      <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-top" style="transform: translate(40px, 85.0px)">
-      <polyline points="-4,12 0,-12 4,12"/>
+    <g class="arrow-top" style="transform: translate(40px, 18px)">
+      <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 161.0px)">
-      <polyline points="-4,-12 0,12 4,-12"/>
+    <g class="arrow-bottom" style="transform: translate(40px, 166px)">
+      <polyline points="-32,-16 0,16 32,-16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 179.0px)">
-      <polyline points="-4,-12 0,12 4,-12"/>
+    <g class="arrow-bottom" style="transform: translate(40px, 199px)">
+      <polyline points="-32,-16 0,16 32,-16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 197.0px)">
-      <polyline points="-4,-12 0,12 4,-12"/>
+    <g class="arrow-bottom" style="transform: translate(40px, 232px)">
+      <polyline points="-32,-16 0,16 32,-16"/>
     </g>
           </g>
         </svg>

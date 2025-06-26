@@ -146,28 +146,19 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         return " ".join(offset_pairs)
 
     def _get_clip_bounds(self) -> dict[str, int]:
-        if self.direction in ["up", "down"]:
-            margin_y = self.height // 5
-            return {
-                "x": 0,
-                "y": margin_y,
-                "width": self.width,
-                "height": self.height - 2 * margin_y
-            }
-        else:
-            margin_x = self.width // 5
-            return {
-                "x": margin_x,
-                "y": 0,
-                "width": self.width - 2 * margin_x,
-                "height": self.height
-            }
+        # Use full canvas area - no margins
+        return {
+            "x": 0,
+            "y": 0,
+            "width": self.width,
+            "height": self.height
+        }
 
     def _get_arrow_points(self) -> str:
         center_x = self.width // 2
         center_y = self.height // 2
-        offset_x = self.width // 8
-        offset_y = self.height // 8
+        offset_x = self.width // 4  # Larger arrows
+        offset_y = self.height // 4  # Larger arrows
 
         if self.direction == "down":
             return f"{center_x - offset_x},{center_y - offset_y // 2} {center_x},{center_y + offset_y // 2} {center_x + offset_x},{center_y - offset_y // 2}"
