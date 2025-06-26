@@ -1,5 +1,5 @@
-from ..base import AnimatedArrowGeneratorBase
-from ...constants import SPREAD_DIRECTIONS
+from captain_arro.generators.base import AnimatedArrowGeneratorBase
+from captain_arro.constants import SPREAD_DIRECTIONS
 
 
 class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
@@ -308,14 +308,12 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         return total_distance / self.speed
 
 
-
 if __name__ == "__main__":
     generator = SpotlightSpreadArrowGenerator()
 
-    print("Generated SVG for static spread arrows with center-out spotlight:")
+    print("Generated default spotlight spread arrow:")
     print(generator.generate_svg())
-
-    generator.save_to_file("_tmp/spotlight_spread_arrows.svg")
+    generator.save_to_file("_tmp/spotlight_spread_arrow_default.svg")
 
     configurations = [
         {"direction": "horizontal", "color": "#3b82f6", "num_arrows": 6, "width": 200, "height": 80,
@@ -330,6 +328,6 @@ if __name__ == "__main__":
 
     for config in configurations:
         gen = SpotlightSpreadArrowGenerator(**config)
-        file = f"_tmp/spotlight_spread_{config['num_arrows']}_{config['direction']}.svg"
+        file = f"_tmp/spotlight_spread_arrow_{config['direction']}_{config['num_arrows']}.svg"
         gen.save_to_file(file)
-        print(f"Created {file} - {config['direction']} center-out spotlight with {config['num_arrows']} arrows")
+        print(f"Created {file} with {config}")

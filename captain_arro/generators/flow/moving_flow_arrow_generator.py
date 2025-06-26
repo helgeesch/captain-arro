@@ -1,5 +1,5 @@
-from ..base import AnimatedArrowGeneratorBase
-from ...constants import ANIMATION_TYPES, FLOW_DIRECTIONS
+from captain_arro.generators.base import AnimatedArrowGeneratorBase
+from captain_arro.constants import ANIMATION_TYPES, FLOW_DIRECTIONS
 
 
 class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
@@ -144,15 +144,12 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
         return "\n    ".join(animations)
 
 
-
 if __name__ == "__main__":
     generator = MovingFlowArrowGenerator()
 
-    print("Generated SVG for green right-pointing arrow with 5 arrows (200x100):")
+    print("Generated default moving flow arrow:")
     print(generator.generate_svg())
-
-    print(f"\nSaving red upward arrow with 2 arrows (100x100) to file...")
-    generator.save_to_file("_tmp/arrow_default.svg")
+    generator.save_to_file("_tmp/moving_flow_arrow_default.svg")
 
     configurations = [
         {"direction": "down", "color": "#3b82f6", "num_arrows": 3, "width": 60, "height": 120, "animation": "linear"},
@@ -163,6 +160,6 @@ if __name__ == "__main__":
 
     for config in configurations:
         gen = MovingFlowArrowGenerator(**config)
-        file = f"_tmp/arrow_{config['num_arrows']}_{config['direction']}.svg"
+        file = f"_tmp/moving_flow_arrow_{config['direction']}_{config['num_arrows']}.svg"
         gen.save_to_file(file)
-        print(f"Created {file} with {config['num_arrows']} arrows ({config['width']}x{config['height']})")
+        print(f"Created {file} with {config}")

@@ -1,5 +1,5 @@
-from ..base import AnimatedArrowGeneratorBase
-from ...constants import ANIMATION_TYPES, FLOW_DIRECTIONS
+from captain_arro.generators.base import AnimatedArrowGeneratorBase
+from captain_arro.constants import FLOW_DIRECTIONS
 
 
 class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
@@ -213,26 +213,25 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         """
 
 
-
 if __name__ == "__main__":
     generator = SpotlightFlowArrowGenerator()
 
-    print("Generated SVG for green downward arrows with moving spotlight:")
+    print("Generated default spotlight flow arrow:")
     print(generator.generate_svg())
 
-    generator.save_to_file("_tmp/spotlight_arrows.svg")
+    generator.save_to_file("_tmp/spotlight_flow_arrow_default.svg")
 
     configurations = [
         {"direction": "right", "color": "#3b82f6", "num_arrows": 2, "width": 200, "height": 80,
-         "speed_pixels_per_second": 100.0, "spotlight_size": 0.3},
+         "speed": 100.0, "spotlight_size": 0.3},
         {"direction": "up", "color": "#ef4444", "num_arrows": 3, "width": 100, "height": 150,
-         "speed_pixels_per_second": 60.0, "spotlight_size": 0.5, "dim_opacity": 0.1},
+         "speed": 60.0, "spotlight_size": 0.5, "dim_opacity": 0.1},
         {"direction": "left", "color": "#10b981", "num_arrows": 4, "width": 180, "height": 60,
-         "speed_pixels_per_second": 120.0, "spotlight_size": 0.25},
+         "speed": 120.0, "spotlight_size": 0.25},
     ]
 
     for config in configurations:
         gen = SpotlightFlowArrowGenerator(**config)
-        file = f"_tmp/spotlight_arrow_{config['num_arrows']}.svg"
+        file = f"_tmp/spotlight_flow_arrow_{config['direction']}_{config['num_arrows']}.svg"
         gen.save_to_file(file)
-        print(f"Created {file} - {config['direction']} spotlight with {config['num_arrows']} arrows")
+        print(f"Created {file} - with {config}")
