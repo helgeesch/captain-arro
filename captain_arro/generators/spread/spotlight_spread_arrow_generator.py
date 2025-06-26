@@ -307,6 +307,10 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             total_distance = self.width
         return total_distance / self.speed
 
+    def _generate_animations(self) -> str:
+        """Return empty string since animations are handled by gradient transforms."""
+        return ""
+
 
 if __name__ == "__main__":
     generator = SpotlightSpreadArrowGenerator()
