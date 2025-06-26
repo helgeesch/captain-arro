@@ -1,0 +1,72 @@
+
+        <svg width="250" height="80" viewBox="0 0 250 80" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="arrowClip">
+              <rect x="25" y="0" width="200" height="80"/>
+            </clipPath>
+          </defs>
+
+          <style>
+            .arrow {
+              stroke: #14b8a6;
+              stroke-width: 2;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+
+            .group-left {
+              animation: moveLeft 1.87s ease-in-out infinite alternate;
+            }
+
+            .group-right {
+              animation: moveRight 1.87s ease-in-out infinite alternate;
+            }
+
+            .group-top {
+              animation: moveTop 1.87s ease-in-out infinite alternate;
+            }
+
+            .group-bottom {
+              animation: moveBottom 1.87s ease-in-out infinite alternate;
+            }
+
+            
+        @keyframes moveLeft {
+          0% { transform: translateX(0px); }
+          100% { transform: translateX(28px); }
+        }
+
+        @keyframes moveRight {
+          0% { transform: translateX(0px); }
+          100% { transform: translateX(-28px); }
+        }
+          </style>
+
+          <g clip-path="url(#arrowClip)">
+            <g class="arrow group-left">
+      <g style="transform: translate(47.0px, 40px)">
+        <polyline points="12,-4 -12,0 12,4"/>
+      </g>
+      <g style="transform: translate(63.0px, 40px)">
+        <polyline points="12,-4 -12,0 12,4"/>
+      </g>
+      <g style="transform: translate(79.0px, 40px)">
+        <polyline points="12,-4 -12,0 12,4"/>
+      </g>
+    </g>
+    
+    <g class="arrow group-right">
+      <g style="transform: translate(169.0px, 40px)">
+        <polyline points="-12,-4 12,0 -12,4"/>
+      </g>
+      <g style="transform: translate(185.0px, 40px)">
+        <polyline points="-12,-4 12,0 -12,4"/>
+      </g>
+      <g style="transform: translate(201.0px, 40px)">
+        <polyline points="-12,-4 12,0 -12,4"/>
+      </g>
+    </g>
+          </g>
+        </svg>
+        

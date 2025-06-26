@@ -1,0 +1,60 @@
+
+        <svg width="180" height="70" viewBox="0 0 180 70" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="arrowClip">
+              <rect x="36" y="0" width="108" height="70"/>
+            </clipPath>
+            
+        <linearGradient id="spotlightGradient" x1="0" y1="0" x2="180" y2="0" gradientUnits="userSpaceOnUse">
+          <animateTransform
+            attributeName="gradientTransform"
+            type="translate"
+            from="-180 0"
+            to="360 0"
+            dur="4.50s"
+            repeatCount="indefinite"/>
+          <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+          <stop offset="30.0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+          <stop offset="50%" stop-color="#8b5cf6" stop-opacity="1"/>
+          <stop offset="70.0%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+          <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.15"/>
+        </linearGradient>
+        
+          </defs>
+        
+          <style>
+            .arrow {
+              stroke: url(#spotlightGradient);
+              stroke-width: 10;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+            
+            
+        @keyframes spotlight {
+          0% {
+            transform: translateX(-180px);
+          }
+          100% {
+            transform: translateX(180px);
+          }
+        }
+        
+          </style>
+        
+          <g clip-path="url(#arrowClip)">
+                <g class="arrow">
+      <polyline points="52,27 74,35 52,43"/>
+    </g>
+    
+    <g class="arrow">
+      <polyline points="79,27 101,35 79,43"/>
+    </g>
+    
+    <g class="arrow">
+      <polyline points="106,27 128,35 106,43"/>
+    </g>
+          </g>
+        </svg>
+        

@@ -1,0 +1,2 @@
+# Captain Arro has no runtime dependencies
+# This file is kept for compatibility with older pip versions

@@ -1,0 +1,99 @@
+
+        <svg width="80" height="250" viewBox="0 0 80 250" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="arrowClip">
+              <rect x="0" y="25" width="80" height="200"/>
+            </clipPath>
+            
+        <linearGradient id="spotlightGradientTop" x1="0" y1="0" x2="0" y2="250" gradientUnits="userSpaceOnUse">
+          <animateTransform
+            attributeName="gradientTransform"
+            type="translate"
+            values="0 125; 0 -250"
+            dur="7.14s"
+            repeatCount="indefinite"/>
+          <stop offset="0%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="32.5%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="50%" stop-color="#059669" stop-opacity="1"/>
+          <stop offset="67.5%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
+        </linearGradient>
+
+        <linearGradient id="spotlightGradientBottom" x1="0" y1="-250" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+          <animateTransform
+            attributeName="gradientTransform"
+            type="translate"
+            values="0 -125; 0 250"
+            dur="7.14s"
+            repeatCount="indefinite"/>
+          <stop offset="0%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="32.5%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="50%" stop-color="#059669" stop-opacity="1"/>
+          <stop offset="67.5%" stop-color="#059669" stop-opacity="0.1"/>
+          <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
+        </linearGradient>
+          </defs>
+
+          <style>
+            .arrow-left {
+              stroke: url(#spotlightGradientLeft);
+              stroke-width: 10;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+
+            .arrow-right {
+              stroke: url(#spotlightGradientRight);
+              stroke-width: 10;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+
+            .arrow-top {
+              stroke: url(#spotlightGradientTop);
+              stroke-width: 10;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+
+            .arrow-bottom {
+              stroke: url(#spotlightGradientBottom);
+              stroke-width: 10;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+            
+            
+          </style>
+
+          <g clip-path="url(#arrowClip)">
+                <g class="arrow-top" style="transform: translate(40px, 49.0px)">
+      <polyline points="-4,12 0,-12 4,12"/>
+    </g>
+    
+    <g class="arrow-top" style="transform: translate(40px, 67.0px)">
+      <polyline points="-4,12 0,-12 4,12"/>
+    </g>
+    
+    <g class="arrow-top" style="transform: translate(40px, 85.0px)">
+      <polyline points="-4,12 0,-12 4,12"/>
+    </g>
+    
+    <g class="arrow-bottom" style="transform: translate(40px, 161.0px)">
+      <polyline points="-4,-12 0,12 4,-12"/>
+    </g>
+    
+    <g class="arrow-bottom" style="transform: translate(40px, 179.0px)">
+      <polyline points="-4,-12 0,12 4,-12"/>
+    </g>
+    
+    <g class="arrow-bottom" style="transform: translate(40px, 197.0px)">
+      <polyline points="-4,-12 0,12 4,-12"/>
+    </g>
+          </g>
+        </svg>
+        

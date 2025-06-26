@@ -1,0 +1,75 @@
+
+        <svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="arrowClip">
+              <rect x="40" y="0" width="120" height="50"/>
+            </clipPath>
+            
+          </defs>
+        
+          <style>
+            .arrow {
+              stroke: #10b981;
+              stroke-width: 8;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill: none;
+            }
+            
+                .arrow1 {
+      animation: flow1 6.67s ease-in-out infinite;
+    }
+    
+    .arrow2 {
+      animation: flow2 6.67s ease-in-out infinite;
+    }
+            
+            
+        @keyframes flow1 {
+          0% {
+            transform: translateX(100px);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-100px);
+            opacity: 0;
+          }
+        }
+        
+    
+        @keyframes flow2 {
+          0% {
+            transform: translateX(100px);
+            opacity: 0;
+          }
+          20% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(-100px);
+            opacity: 0;
+          }
+        }
+        
+          </style>
+        
+          <g clip-path="url(#arrowClip)">
+                <g class="arrow arrow1">
+      <polyline points="125,13 75,25 125,37"/>
+    </g>
+    
+    <g class="arrow arrow2" style="animation-delay: -3.33s;">
+      <polyline points="125,13 75,25 125,37"/>
+    </g>
+          </g>
+        </svg>
+        
