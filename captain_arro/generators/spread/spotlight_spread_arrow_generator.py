@@ -1,7 +1,8 @@
-from typing import Literal
+from ..base import AnimatedArrowGeneratorBase
+from ...constants import SPREAD_DIRECTIONS
 
 
-class SpotlightSpreadArrowGenerator:
+class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     def __init__(
             self,
             color: str = "#2563eb",
@@ -9,25 +10,29 @@ class SpotlightSpreadArrowGenerator:
             width: int = 100,
             height: int = 100,
             speed: float = 20.0,
-            direction: Literal["horizontal", "vertical"] = "horizontal",
+            direction: SPREAD_DIRECTIONS = "horizontal",
             num_arrows: int = 4,
             spotlight_size: float = 0.3,
             dim_opacity: float = 0.2,
             center_gap_ratio: float = 0.2,
     ):
-        self.color = color
-        self.width = width
-        self.height = height
-        self.speed_pixels_per_second = speed
+        super().__init__(
+            color=color,
+            stroke_width=stroke_width,
+            width=width,
+            height=height,
+            speed=speed,
+            num_arrows=max(2, num_arrows)
+        )
         self.direction = direction.lower()
-        self.num_arrows = max(2, num_arrows)
-        self.stroke_width = max(2, stroke_width)
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
         self.dim_opacity = max(0.0, min(1.0, dim_opacity))
         self.center_gap_ratio = max(0.1, min(0.4, center_gap_ratio))
 
     def generate_svg(self) -> str:
+        """Override to customize arrow styles with directional gradients."""
         clip_bounds = self._get_clip_bounds()
+        animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
         gradient_defs = self._generate_gradient_defs()
 
@@ -37,7 +42,6 @@ class SpotlightSpreadArrowGenerator:
             <clipPath id="arrowClip">
               <rect x="{clip_bounds['x']}" y="{clip_bounds['y']}" width="{clip_bounds['width']}" height="{clip_bounds['height']}"/>
             </clipPath>
-
             {gradient_defs}
           </defs>
 
@@ -73,6 +77,8 @@ class SpotlightSpreadArrowGenerator:
               stroke-linejoin: round;
               fill: none;
             }}
+            
+            {animations}
           </style>
 
           <g clip-path="url(#arrowClip)">
@@ -299,12 +305,8 @@ class SpotlightSpreadArrowGenerator:
             total_distance = self.height
         else:
             total_distance = self.width
-        return total_distance / self.speed_pixels_per_second
+        return total_distance / self.speed
 
-    def save_to_file(self, file_path: str) -> None:
-        svg_content = self.generate_svg()
-        with open(file_path, 'w') as file:
-            file.write(svg_content)
 
 
 if __name__ == "__main__":

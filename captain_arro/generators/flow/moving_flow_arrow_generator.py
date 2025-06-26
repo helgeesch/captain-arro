@@ -1,7 +1,8 @@
-from typing import Literal
+from ..base import AnimatedArrowGeneratorBase
+from ...constants import ANIMATION_TYPES, FLOW_DIRECTIONS
 
 
-class MovingFlowArrowGenerator:
+class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
     def __init__(
             self,
             color: str = "#2563eb",
@@ -9,51 +10,20 @@ class MovingFlowArrowGenerator:
             width: int = 100,
             height: int = 100,
             speed: float = 20.0,  # pixels_per_second
-            direction: Literal["right", "left", "up", "down"] = "right",
+            direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 4,
-            animation: Literal["linear", "ease", "ease-in", "ease-out", "ease-in-out"] = "ease-in-out",
+            animation: ANIMATION_TYPES = "ease-in-out",
     ):
-        self.color = color
-        self.width = width
-        self.height = height
-        self.speed = speed
+        super().__init__(
+            color=color,
+            stroke_width=stroke_width,
+            width=width,
+            height=height,
+            speed=speed,
+            num_arrows=num_arrows
+        )
         self.direction = direction.lower()
-        self.num_arrows = max(1, num_arrows)
-        self.stroke_width = max(2, stroke_width)
         self.animation = animation
-
-    def generate_svg(self) -> str:
-        clip_bounds = self._get_clip_bounds()
-        animations = self._generate_animations()
-        arrow_elements = self._generate_arrow_elements()
-
-        return f"""
-        <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <clipPath id="arrowClip">
-              <rect x="{clip_bounds['x']}" y="{clip_bounds['y']}" width="{clip_bounds['width']}" height="{clip_bounds['height']}"/>
-            </clipPath>
-          </defs>
-        
-          <style>
-            .arrow {{
-              stroke: {self.color};
-              stroke-width: {self.stroke_width};
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }}
-        
-        {self._generate_arrow_classes()}
-        
-            {animations}
-          </style>
-        
-          <g clip-path="url(#arrowClip)">
-        {arrow_elements}
-          </g>
-        </svg>
-        """
 
     def _generate_arrow_classes(self) -> str:
         duration = self._calculate_animation_duration()
@@ -173,10 +143,6 @@ class MovingFlowArrowGenerator:
 
         return "\n    ".join(animations)
 
-    def save_to_file(self, filename: str) -> None:
-        svg_content = self.generate_svg()
-        with open(filename, 'w') as file:
-            file.write(svg_content)
 
 
 if __name__ == "__main__":

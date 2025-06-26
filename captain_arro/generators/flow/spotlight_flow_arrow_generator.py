@@ -1,7 +1,8 @@
-from typing import Literal
+from ..base import AnimatedArrowGeneratorBase
+from ...constants import ANIMATION_TYPES, FLOW_DIRECTIONS
 
 
-class SpotlightFlowArrowGenerator:
+class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
     def __init__(
             self,
             color: str = "#2563eb",
@@ -9,33 +10,36 @@ class SpotlightFlowArrowGenerator:
             width: int = 100,
             height: int = 100,
             speed: float = 20.0,  # pixels_per_second
-            direction: Literal["right", "left", "up", "down"] = "right",
+            direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 3,
             spotlight_size: float = 0.3,
             dim_opacity: float = 0.2,
     ):
-        self.color = color
-        self.width = width
-        self.height = height
-        self.speed_pixels_per_second = speed
+        super().__init__(
+            color=color,
+            stroke_width=stroke_width,
+            width=width,
+            height=height,
+            speed=speed,
+            num_arrows=num_arrows
+        )
         self.direction = direction.lower()
-        self.num_arrows = max(1, num_arrows)
-        self.stroke_width = max(2, stroke_width)
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
         self.dim_opacity = max(0.0, min(1.0, dim_opacity))
 
     def generate_svg(self) -> str:
+        """Override to customize the arrow style for spotlight effect."""
         clip_bounds = self._get_clip_bounds()
+        animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
         gradient_defs = self._generate_gradient_defs()
-
+        
         return f"""
         <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
               <rect x="{clip_bounds['x']}" y="{clip_bounds['y']}" width="{clip_bounds['width']}" height="{clip_bounds['height']}"/>
             </clipPath>
-        
             {gradient_defs}
           </defs>
         
@@ -47,6 +51,8 @@ class SpotlightFlowArrowGenerator:
               stroke-linejoin: round;
               fill: none;
             }}
+            
+            {animations}
           </style>
         
           <g clip-path="url(#arrowClip)">
@@ -177,7 +183,7 @@ class SpotlightFlowArrowGenerator:
             total_distance = self.height
         else:
             total_distance = self.width
-        return total_distance / self.speed_pixels_per_second
+        return total_distance / self.speed
 
     def _generate_animations(self) -> str:
         distance = max(self.width, self.height)
@@ -206,10 +212,6 @@ class SpotlightFlowArrowGenerator:
         }}
         """
 
-    def save_to_file(self, file_path: str) -> None:
-        svg_content = self.generate_svg()
-        with open(file_path, 'w') as file:
-            file.write(svg_content)
 
 
 if __name__ == "__main__":
