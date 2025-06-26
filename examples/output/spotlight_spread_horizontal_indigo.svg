@@ -1,8 +1,8 @@
 
-        <svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="0" y="0" width="300" height="300"/>
+              <rect x="0" y="0" width="300" height="100"/>
             </clipPath>
             
         <linearGradient id="spotlightGradientLeft" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
@@ -10,7 +10,7 @@
             attributeName="gradientTransform"
             type="translate"
             values="150 0; -300 0"
-            dur="6.00s"
+            dur="3.00s"
             repeatCount="indefinite"/>
           <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5"/>
           <stop offset="37.5%" stop-color="#6366f1" stop-opacity="0.5"/>
@@ -24,7 +24,7 @@
             attributeName="gradientTransform"
             type="translate"
             values="-150 0; 300 0"
-            dur="6.00s"
+            dur="3.00s"
             repeatCount="indefinite"/>
           <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5"/>
           <stop offset="37.5%" stop-color="#6366f1" stop-opacity="0.5"/>
@@ -37,7 +37,7 @@
           <style>
             .arrow-left {
               stroke: url(#spotlightGradientLeft);
-              stroke-width: 6;
+              stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -45,7 +45,7 @@
 
             .arrow-right {
               stroke: url(#spotlightGradientRight);
-              stroke-width: 6;
+              stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -53,7 +53,7 @@
 
             .arrow-top {
               stroke: url(#spotlightGradientTop);
-              stroke-width: 6;
+              stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -61,7 +61,7 @@
 
             .arrow-bottom {
               stroke: url(#spotlightGradientBottom);
-              stroke-width: 6;
+              stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -71,36 +71,36 @@
           </style>
 
           <g clip-path="url(#arrowClip)">
-                <g class="arrow-left" style="transform: translate(122px, 150px)">
-      <polyline points="16,-120 -16,0 16,120"/>
+                <g class="arrow-left" style="transform: translate(98px, 50px)">
+      <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(89px, 150px)">
-      <polyline points="16,-120 -16,0 16,120"/>
+    <g class="arrow-left" style="transform: translate(72px, 50px)">
+      <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(56px, 150px)">
-      <polyline points="16,-120 -16,0 16,120"/>
+    <g class="arrow-left" style="transform: translate(46px, 50px)">
+      <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(23px, 150px)">
-      <polyline points="16,-120 -16,0 16,120"/>
+    <g class="arrow-left" style="transform: translate(20px, 50px)">
+      <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(178px, 150px)">
-      <polyline points="-16,-120 16,0 -16,120"/>
+    <g class="arrow-right" style="transform: translate(202px, 50px)">
+      <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(211px, 150px)">
-      <polyline points="-16,-120 16,0 -16,120"/>
+    <g class="arrow-right" style="transform: translate(228px, 50px)">
+      <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(244px, 150px)">
-      <polyline points="-16,-120 16,0 -16,120"/>
+    <g class="arrow-right" style="transform: translate(254px, 50px)">
+      <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(277px, 150px)">
-      <polyline points="-16,-120 16,0 -16,120"/>
+    <g class="arrow-right" style="transform: translate(280px, 50px)">
+      <polyline points="-13,-40 13,0 -13,40"/>
     </g>
           </g>
         </svg>

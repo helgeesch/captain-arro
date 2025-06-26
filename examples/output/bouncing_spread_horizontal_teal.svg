@@ -1,15 +1,15 @@
 
-        <svg width="250" height="200" viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+        <svg width="250" height="100" viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
-              <rect x="0" y="0" width="250" height="200"/>
+              <rect x="0" y="0" width="250" height="100"/>
             </clipPath>
           </defs>
 
           <style>
             .arrow {
               stroke: #14b8a6;
-              stroke-width: 2;
+              stroke-width: 10;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
@@ -45,20 +45,20 @@
 
           <g clip-path="url(#arrowClip)">
             <g class="arrow group-left">
-      <g style="transform: translate(68px, 100px)">
-        <polyline points="21,-80 -21,0 21,80"/>
+      <g style="transform: translate(72px, 50px)">
+        <polyline points="21,-40 -21,0 21,40"/>
       </g>
-      <g style="transform: translate(25px, 100px)">
-        <polyline points="21,-80 -21,0 21,80"/>
+      <g style="transform: translate(29px, 50px)">
+        <polyline points="21,-40 -21,0 21,40"/>
       </g>
     </g>
     
     <g class="arrow group-right">
-      <g style="transform: translate(182px, 100px)">
-        <polyline points="-21,-80 21,0 -21,80"/>
+      <g style="transform: translate(178px, 50px)">
+        <polyline points="-21,-40 21,0 -21,40"/>
       </g>
-      <g style="transform: translate(225px, 100px)">
-        <polyline points="-21,-80 21,0 -21,80"/>
+      <g style="transform: translate(221px, 50px)">
+        <polyline points="-21,-40 21,0 -21,40"/>
       </g>
     </g>
           </g>

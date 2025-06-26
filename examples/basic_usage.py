@@ -143,10 +143,11 @@ def generate_bouncing_spread_examples(output_dir):
                 "color": "#14b8a6",
                 "num_arrows": 4,
                 "width": 250,
-                "height": 200,
+                "height": 100,
                 "speed": 15.0,
                 "animation": "ease-in-out",
                 "center_gap_ratio": 0.3,
+                "stroke_width": 10
             }
         },
         {
@@ -199,14 +200,14 @@ def generate_spotlight_spread_examples(output_dir):
             "params": {
                 "direction": "horizontal",
                 "color": "#6366f1",
-                "stroke_width": 6,
+                "stroke_width": 12,
                 "num_arrows": 8,
                 "width": 300,
-                "height": 300,
-                "speed": 50.0,
+                "height": 100,
+                "speed": 100.0,
                 "spotlight_size": 0.25,
                 "dim_opacity": 0.5,
-                "center_gap_ratio": 0.1
+                "center_gap_ratio": 0.3,
             }
         },
         {
