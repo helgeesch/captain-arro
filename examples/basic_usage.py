@@ -143,7 +143,7 @@ def generate_bouncing_spread_examples(output_dir):
                 "color": "#14b8a6",
                 "num_arrows": 4,
                 "width": 250,
-                "height": 400,
+                "height": 200,
                 "speed": 15.0,
                 "animation": "ease-in-out",
                 "center_gap_ratio": 0.3,
