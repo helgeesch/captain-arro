@@ -234,4 +234,4 @@ if __name__ == "__main__":
         gen = SpotlightFlowArrowGenerator(**config)
         file = f"_tmp/spotlight_flow_arrow_{config['direction']}_{config['num_arrows']}.svg"
         gen.save_to_file(file)
-        print(f"Created {file} - with {config}")
+        print(f"Created {file} with {config}")
