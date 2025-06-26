@@ -273,7 +273,6 @@ class MovingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         }}"""
 
 
-
 if __name__ == "__main__":
     generator = MovingSpreadArrowGenerator()
 
