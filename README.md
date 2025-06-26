@@ -1,9 +1,11 @@
-# Captain Arro 🏹
+# Captain Arro ⬅⛵️➡
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **Captain Arro** is a Python library for generating animated SVG arrows for web interfaces. Create beautiful, customizable arrow animations with just a few lines of code.
+
+Yes, this package is totally vibe coded. It's useful anyhow!
 
 ## Features
 
@@ -288,17 +290,10 @@ Generated SVGs work in all modern browsers that support:
 - CSS animations (`@keyframes`)
 - Linear gradients
 
-Tested in: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## License
 
@@ -316,4 +311,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Helge Esch](https://github.com/helgeesch)
+Made with ❤️ and good vibes
