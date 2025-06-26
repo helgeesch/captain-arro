@@ -251,7 +251,8 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             
             for i in range(arrows_per_side):
                 # Outermost arrow tip exactly at edge, work backwards
-                arrow_center = left_edge - (layout["arrow_width"] // 2) - i * layout["arrow_width"]
+                # Account for stroke width so stroke edge stays within bounds
+                arrow_center = left_edge - (layout["arrow_width"] // 2) + (self.stroke_width // 2) - i * layout["arrow_width"]
                 positions.append({"x": int(arrow_center), "y": self.height // 2})
 
         return positions
@@ -268,7 +269,8 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             
             for i in range(arrows_per_side):
                 # Outermost arrow tip exactly at edge, work backwards
-                arrow_center = right_edge + (layout["arrow_width"] // 2) + i * layout["arrow_width"]
+                # Account for stroke width so stroke edge stays within bounds
+                arrow_center = right_edge + (layout["arrow_width"] // 2) - (self.stroke_width // 2) + i * layout["arrow_width"]
                 positions.append({"x": int(arrow_center), "y": self.height // 2})
 
         return positions
@@ -285,7 +287,8 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             
             for i in range(arrows_per_side):
                 # Outermost arrow tip exactly at edge, work backwards
-                arrow_center = top_edge - (layout["arrow_height"] // 2) - i * layout["arrow_height"]
+                # Account for stroke width so stroke edge stays within bounds
+                arrow_center = top_edge - (layout["arrow_height"] // 2) + (self.stroke_width // 2) - i * layout["arrow_height"]
                 positions.append({"x": self.width // 2, "y": int(arrow_center)})
 
         return positions
@@ -302,7 +305,8 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             
             for i in range(arrows_per_side):
                 # Outermost arrow tip exactly at edge, work backwards
-                arrow_center = bottom_edge + (layout["arrow_height"] // 2) + i * layout["arrow_height"]
+                # Account for stroke width so stroke edge stays within bounds
+                arrow_center = bottom_edge + (layout["arrow_height"] // 2) - (self.stroke_width // 2) + i * layout["arrow_height"]
                 positions.append({"x": self.width // 2, "y": int(arrow_center)})
 
         return positions

@@ -71,35 +71,35 @@
           </style>
 
           <g clip-path="url(#arrowClip)">
-                <g class="arrow-left" style="transform: translate(119px, 150px)">
+                <g class="arrow-left" style="transform: translate(122px, 150px)">
       <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(86px, 150px)">
+    <g class="arrow-left" style="transform: translate(89px, 150px)">
       <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(53px, 150px)">
+    <g class="arrow-left" style="transform: translate(56px, 150px)">
       <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(20px, 150px)">
+    <g class="arrow-left" style="transform: translate(23px, 150px)">
       <polyline points="16,-120 -16,0 16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(181px, 150px)">
+    <g class="arrow-right" style="transform: translate(178px, 150px)">
       <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(214px, 150px)">
+    <g class="arrow-right" style="transform: translate(211px, 150px)">
       <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(247px, 150px)">
+    <g class="arrow-right" style="transform: translate(244px, 150px)">
       <polyline points="-16,-120 16,0 -16,120"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(280px, 150px)">
+    <g class="arrow-right" style="transform: translate(277px, 150px)">
       <polyline points="-16,-120 16,0 -16,120"/>
     </g>
           </g>

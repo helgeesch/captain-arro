@@ -45,25 +45,25 @@
 
           <g clip-path="url(#arrowClip)">
             <g class="arrow group-top">
-      <g style="transform: translate(150px, 50px)">
+      <g style="transform: translate(150px, 51px)">
         <polyline points="-120,10 0,-10 120,10"/>
       </g>
-      <g style="transform: translate(150px, 30px)">
+      <g style="transform: translate(150px, 31px)">
         <polyline points="-120,10 0,-10 120,10"/>
       </g>
-      <g style="transform: translate(150px, 10px)">
+      <g style="transform: translate(150px, 11px)">
         <polyline points="-120,10 0,-10 120,10"/>
       </g>
     </g>
     
     <g class="arrow group-bottom">
-      <g style="transform: translate(150px, 100px)">
+      <g style="transform: translate(150px, 99px)">
         <polyline points="-120,-10 0,10 120,-10"/>
       </g>
-      <g style="transform: translate(150px, 120px)">
+      <g style="transform: translate(150px, 119px)">
         <polyline points="-120,-10 0,10 120,-10"/>
       </g>
-      <g style="transform: translate(150px, 140px)">
+      <g style="transform: translate(150px, 139px)">
         <polyline points="-120,-10 0,10 120,-10"/>
       </g>
     </g>

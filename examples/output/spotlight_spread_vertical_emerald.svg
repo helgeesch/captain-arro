@@ -71,27 +71,27 @@
           </style>
 
           <g clip-path="url(#arrowClip)">
-                <g class="arrow-top" style="transform: translate(40px, 84px)">
+                <g class="arrow-top" style="transform: translate(40px, 89px)">
       <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-top" style="transform: translate(40px, 51px)">
+    <g class="arrow-top" style="transform: translate(40px, 56px)">
       <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-top" style="transform: translate(40px, 18px)">
+    <g class="arrow-top" style="transform: translate(40px, 23px)">
       <polyline points="-32,16 0,-16 32,16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 166px)">
+    <g class="arrow-bottom" style="transform: translate(40px, 161px)">
       <polyline points="-32,-16 0,16 32,-16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 199px)">
+    <g class="arrow-bottom" style="transform: translate(40px, 194px)">
       <polyline points="-32,-16 0,16 32,-16"/>
     </g>
     
-    <g class="arrow-bottom" style="transform: translate(40px, 232px)">
+    <g class="arrow-bottom" style="transform: translate(40px, 227px)">
       <polyline points="-32,-16 0,16 32,-16"/>
     </g>
           </g>
