@@ -16,30 +16,30 @@
             }
 
             .group-left {
-              animation: moveLeft 1.10s ease infinite alternate;
+              animation: moveLeft 1.12s ease infinite alternate;
             }
 
             .group-right {
-              animation: moveRight 1.10s ease infinite alternate;
+              animation: moveRight 1.12s ease infinite alternate;
             }
 
             .group-top {
-              animation: moveTop 1.10s ease infinite alternate;
+              animation: moveTop 1.12s ease infinite alternate;
             }
 
             .group-bottom {
-              animation: moveBottom 1.10s ease infinite alternate;
+              animation: moveBottom 1.12s ease infinite alternate;
             }
 
             
         @keyframes moveTop {
           0% { transform: translateY(0px); }
-          100% { transform: translateY(22px); }
+          100% { transform: translateY(22.5px); }
         }
 
         @keyframes moveBottom {
           0% { transform: translateY(0px); }
-          100% { transform: translateY(-22px); }
+          100% { transform: translateY(-22.5px); }
         }
           </style>
 

@@ -16,30 +16,30 @@
             }
 
             .group-left {
-              animation: moveLeft 1.70s ease-in-out infinite alternate;
+              animation: moveLeft 1.71s ease-in-out infinite alternate;
             }
 
             .group-right {
-              animation: moveRight 1.70s ease-in-out infinite alternate;
+              animation: moveRight 1.71s ease-in-out infinite alternate;
             }
 
             .group-top {
-              animation: moveTop 1.70s ease-in-out infinite alternate;
+              animation: moveTop 1.71s ease-in-out infinite alternate;
             }
 
             .group-bottom {
-              animation: moveBottom 1.70s ease-in-out infinite alternate;
+              animation: moveBottom 1.71s ease-in-out infinite alternate;
             }
 
             
         @keyframes moveTop {
           0% { transform: translateY(0px); }
-          100% { transform: translateY(17px); }
+          100% { transform: translateY(17.099999999999998px); }
         }
 
         @keyframes moveBottom {
           0% { transform: translateY(0px); }
-          100% { transform: translateY(-17px); }
+          100% { transform: translateY(-17.099999999999998px); }
         }
           </style>
 

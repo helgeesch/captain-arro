@@ -46,7 +46,7 @@ def generate_moving_flow_examples(output_dir):
                 "num_arrows": 6,
                 "width": 150,
                 "height": 100,
-                "speed": 25.0,
+                "speed_in_px_per_second": 25.0,
                 "animation": "ease-in-out"
             }
         },
@@ -58,7 +58,7 @@ def generate_moving_flow_examples(output_dir):
                 "num_arrows": 4,
                 "width": 80,
                 "height": 120,
-                "speed": 15.0,
+                "speed_in_px_per_second": 15.0,
                 "animation": "linear"
             }
         },
@@ -71,7 +71,7 @@ def generate_moving_flow_examples(output_dir):
                 "width": 200,
                 "height": 50,
                 "stroke_width": 8,
-                "speed": 30.0
+                "speed_in_px_per_second": 30.0
             }
         }
     ]
@@ -100,7 +100,7 @@ def generate_spotlight_flow_examples(output_dir):
                 "num_arrows": 3,
                 "width": 180,
                 "height": 120,
-                "speed": 40.0,
+                "speed_in_px_per_second": 40.0,
                 "spotlight_size": 0.3,
                 "dim_opacity": 0.5,
             }
@@ -113,7 +113,7 @@ def generate_spotlight_flow_examples(output_dir):
                 "num_arrows": 2,
                 "width": 60,
                 "height": 150,
-                "speed": 20.0,
+                "speed_in_px_per_second": 20.0,
                 "spotlight_size": 0.5,
                 "dim_opacity": 0.1
             }
@@ -144,7 +144,7 @@ def generate_bouncing_spread_examples(output_dir):
                 "num_arrows": 4,
                 "width": 250,
                 "height": 100,
-                "speed": 15.0,
+                "speed_in_px_per_second": 15.0,
                 "animation": "ease-in-out",
                 "center_gap_ratio": 0.3,
                 "stroke_width": 10
@@ -158,7 +158,7 @@ def generate_bouncing_spread_examples(output_dir):
                 "num_arrows": 4,
                 "width": 100,
                 "height": 200,
-                "speed": 20.0,
+                "speed_in_px_per_second": 20.0,
                 "animation": "ease",
                 "stroke_width": 4
             },
@@ -171,7 +171,7 @@ def generate_bouncing_spread_examples(output_dir):
                 "num_arrows": 8,
                 "width": 400,
                 "height": 200,
-                "speed": 20.0,
+                "speed_in_px_per_second": 20.0,
                 "animation": "ease",
                 "stroke_width": 8,
                 "center_gap_ratio": 1.5,
@@ -204,7 +204,7 @@ def generate_spotlight_spread_examples(output_dir):
                 "num_arrows": 8,
                 "width": 300,
                 "height": 100,
-                "speed": 100.0,
+                "speed_in_px_per_second": 100.0,
                 "spotlight_size": 0.25,
                 "dim_opacity": 0.5,
                 "center_gap_ratio": 0.3,
@@ -218,7 +218,7 @@ def generate_spotlight_spread_examples(output_dir):
                 "num_arrows": 6,
                 "width": 80,
                 "height": 250,
-                "speed": 35.0,
+                "speed_in_px_per_second": 35.0,
                 "spotlight_size": 0.35,
                 "dim_opacity": 0.1
             }
