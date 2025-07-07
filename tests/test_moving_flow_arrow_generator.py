@@ -17,7 +17,7 @@ class TestMovingFlowArrowGenerator:
         assert generator.stroke_width == 15
         assert generator.width == 100
         assert generator.height == 100
-        assert generator.speed == 20.0
+        assert generator.speed_in_px_per_second == 20.0
         assert generator.direction == "right"
         assert generator.num_arrows == 4
         assert generator.animation == "ease-in-out"
@@ -29,7 +29,7 @@ class TestMovingFlowArrowGenerator:
             stroke_width=20,
             width=200,
             height=150,
-            speed=30.0,
+            speed_in_px_per_second=30.0,
             direction="up",
             num_arrows=6,
             animation="linear"
@@ -39,7 +39,7 @@ class TestMovingFlowArrowGenerator:
         assert generator.stroke_width == 20
         assert generator.width == 200
         assert generator.height == 150
-        assert generator.speed == 30.0
+        assert generator.speed_in_px_per_second == 30.0
         assert generator.direction == "up"
         assert generator.num_arrows == 6
         assert generator.animation == "linear"
@@ -102,7 +102,7 @@ class TestMovingFlowArrowGenerator:
 
     def test_calculate_animation_duration(self):
         """Test animation duration calculation."""
-        generator = MovingFlowArrowGenerator(speed=20.0, width=100, height=100)
+        generator = MovingFlowArrowGenerator(speed_in_px_per_second=20.0, width=100, height=100)
         duration = generator._calculate_animation_duration()
         
         assert isinstance(duration, float)

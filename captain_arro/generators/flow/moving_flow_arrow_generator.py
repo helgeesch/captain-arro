@@ -9,28 +9,26 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
             stroke_width: int = 15,
             width: int = 100,
             height: int = 100,
-            speed: float = 20.0,  # pixels_per_second
+            speed_in_px_per_second: float = 20.0,
+            speed_in_duration_seconds: float = None,
             direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 4,
             animation: ANIMATION_TYPES = "ease-in-out",
-            speed_in_px_per_second: float = None,
-            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
             stroke_width=stroke_width,
             width=width,
             height=height,
-            speed=speed,
-            num_arrows=num_arrows,
             speed_in_px_per_second=speed_in_px_per_second,
-            speed_in_duration_seconds=speed_in_duration_seconds
+            speed_in_duration_seconds=speed_in_duration_seconds,
+            num_arrows=num_arrows,
         )
         self.direction = direction.lower()
         self.animation = animation
 
     def _generate_arrow_classes(self) -> str:
-        duration = self._calculate_animation_duration()
+        duration = self.speed_in_duration_seconds
         classes = []
         for i in range(1, self.num_arrows + 1):
             classes.append(
@@ -39,7 +37,7 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
 
     def _generate_arrow_elements(self) -> str:
         arrow_points = self._get_arrow_points()
-        duration = self._calculate_animation_duration()
+        duration = self.speed_in_duration_seconds
         elements = []
 
         for i in range(1, self.num_arrows + 1):

@@ -9,23 +9,21 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             stroke_width: int = 2,
             width: int = 300,
             height: int = 150,
-            speed: float = 10.0,
+            speed_in_px_per_second: float = 10.0,
+            speed_in_duration_seconds: float = None,
             direction: SPREAD_DIRECTIONS = "vertical",
             num_arrows: int = 6,
             animation: ANIMATION_TYPES = "ease-in-out",
             center_gap_ratio: float = 0.2,
-            speed_in_px_per_second: float = None,
-            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
             stroke_width=stroke_width,
             width=width,
             height=height,
-            speed=speed,
-            num_arrows=max(2, num_arrows),
             speed_in_px_per_second=speed_in_px_per_second,
-            speed_in_duration_seconds=speed_in_duration_seconds
+            speed_in_duration_seconds=speed_in_duration_seconds,
+            num_arrows=max(2, num_arrows),
         )
         self.direction = direction.lower()
         self.animation = animation
@@ -55,19 +53,19 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             }}
 
             .group-left {{
-              animation: moveLeft {self._calculate_animation_duration():.2f}s {self.animation} infinite alternate;
+              animation: moveLeft {self.speed_in_duration_seconds:.2f}s {self.animation} infinite alternate;
             }}
 
             .group-right {{
-              animation: moveRight {self._calculate_animation_duration():.2f}s {self.animation} infinite alternate;
+              animation: moveRight {self.speed_in_duration_seconds:.2f}s {self.animation} infinite alternate;
             }}
 
             .group-top {{
-              animation: moveTop {self._calculate_animation_duration():.2f}s {self.animation} infinite alternate;
+              animation: moveTop {self.speed_in_duration_seconds:.2f}s {self.animation} infinite alternate;
             }}
 
             .group-bottom {{
-              animation: moveBottom {self._calculate_animation_duration():.2f}s {self.animation} infinite alternate;
+              animation: moveBottom {self.speed_in_duration_seconds:.2f}s {self.animation} infinite alternate;
             }}
 
             {animations}

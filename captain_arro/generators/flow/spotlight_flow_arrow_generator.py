@@ -9,24 +9,22 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
             stroke_width: int = 10,
             width: int = 100,
             height: int = 100,
-            speed: float = 20.0,  # pixels_per_second
+            speed_in_px_per_second: float = 20.0,
+            speed_in_duration_seconds: float = None,
             direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 3,
             spotlight_size: float = 0.3,
             spotlight_path_extension_factor: float = 0.5,
             dim_opacity: float = 0.2,
-            speed_in_px_per_second: float = None,
-            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
             stroke_width=stroke_width,
             width=width,
             height=height,
-            speed=speed,
-            num_arrows=num_arrows,
             speed_in_px_per_second=speed_in_px_per_second,
-            speed_in_duration_seconds=speed_in_duration_seconds
+            speed_in_duration_seconds=speed_in_duration_seconds,
+            num_arrows=num_arrows,
         )
         self.direction = direction.lower()
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
@@ -68,7 +66,7 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         """
 
     def _generate_gradient_defs(self) -> str:
-        duration = self._calculate_animation_duration()
+        duration = self.speed_in_duration_seconds
 
         if self.direction in ["up", "down"]:
             gradient_attrs = f'x1="0" y1="0" x2="0" y2="{self.height}" gradientUnits="userSpaceOnUse"'

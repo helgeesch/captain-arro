@@ -9,25 +9,23 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             stroke_width: int = 10,
             width: int = 100,
             height: int = 100,
-            speed: float = 20.0,
+            speed_in_px_per_second: float = 20.0,
+            speed_in_duration_seconds: float = None,
             direction: SPREAD_DIRECTIONS = "horizontal",
             num_arrows: int = 4,
             spotlight_size: float = 0.3,
             spotlight_path_extension_factor: float = 0.5,
             dim_opacity: float = 0.2,
             center_gap_ratio: float = 0.2,
-            speed_in_px_per_second: float = None,
-            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
             stroke_width=stroke_width,
             width=width,
             height=height,
-            speed=speed,
-            num_arrows=max(2, num_arrows),
             speed_in_px_per_second=speed_in_px_per_second,
-            speed_in_duration_seconds=speed_in_duration_seconds
+            speed_in_duration_seconds=speed_in_duration_seconds,
+            num_arrows=max(2, num_arrows),
         )
         self.direction = direction.lower()
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
@@ -94,7 +92,7 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         """
 
     def _generate_gradient_defs(self) -> str:
-        duration = self._calculate_animation_duration()
+        duration = self.speed_in_duration_seconds
         spotlight_percent = self.spotlight_size * 100
         dim_before = (100 - spotlight_percent) / 2
         dim_after = dim_before + spotlight_percent
