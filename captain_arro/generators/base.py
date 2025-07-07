@@ -32,13 +32,12 @@ class AnimatedArrowGeneratorBase(ABC):
         
         # Speed options validation - only one can be defined
         speed_options_defined = sum([
-            speed != 20.0,  # Check if speed was explicitly set (not default)
             speed_in_px_per_second is not None,
             speed_in_duration_seconds is not None
         ])
         
         if speed_options_defined > 1:
-            raise ValueError("Only one speed option can be defined: speed, speed_in_px_per_second, or speed_in_duration_seconds")
+            raise ValueError("Only one speed option can be defined: speed_in_px_per_second or speed_in_duration_seconds")
         
         # Set speed based on provided option
         if speed_in_px_per_second is not None:
