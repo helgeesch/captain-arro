@@ -3,7 +3,7 @@ Base class for arrow generators.
 """
 
 from abc import ABC, abstractmethod
-from typing import Dict, Any
+from typing import Dict, Any, Optional, Union
 
 
 class AnimatedArrowGeneratorBase(ABC):
@@ -19,16 +19,34 @@ class AnimatedArrowGeneratorBase(ABC):
         stroke_width: int = 10,
         width: int = 100,
         height: int = 100,
-        speed: float = 20.0,
+        speed_in_px_per_second: float = None,
+        speed_in_duration_seconds: float = None,
         num_arrows: int = 4,
     ):
         self.color = color
         self.width = width
         self.height = height
-        self.speed = speed
         self.num_arrows = max(1, num_arrows)
         self.stroke_width = max(2, stroke_width)
-    
+        
+        if (speed_in_px_per_second is None) and (speed_in_duration_seconds is None):
+            raise ValueError("One speed option must be defined: speed_in_px_per_second or speed_in_duration_seconds")
+        if (speed_in_px_per_second is not None) and (speed_in_duration_seconds is not None):
+            raise ValueError("Only one speed option can be defined: speed_in_px_per_second or speed_in_duration_seconds")
+
+        self.speed_in_px_per_second = speed_in_px_per_second
+        self._speed_in_duration_seconds = speed_in_duration_seconds
+
+    @property
+    def speed_in_duration_seconds(self) -> float:
+        """Get the speed in duration seconds, calculating it if needed."""
+        if self._speed_in_duration_seconds is not None:
+            return self._speed_in_duration_seconds
+        else:
+            # Calculate from speed_in_px_per_second
+            transform_distance = self._get_transform_distance()
+            return transform_distance / self.speed_in_px_per_second
+
     @abstractmethod
     def _generate_arrow_elements(self) -> str:
         """Generate the arrow elements for the SVG."""
@@ -38,6 +56,15 @@ class AnimatedArrowGeneratorBase(ABC):
     def _generate_animations(self) -> str:
         """Generate the CSS animations for the SVG."""
         pass
+    
+    @abstractmethod
+    def _get_transform_distance(self) -> float:
+        """Get the transform distance for animation calculations."""
+        pass
+    
+    def _calculate_animation_duration(self) -> float:
+        """Calculate the appropriate animation duration based on speed options."""
+        return self.speed_in_duration_seconds
     
     def generate_svg(self) -> str:
         """Generate the complete SVG string."""

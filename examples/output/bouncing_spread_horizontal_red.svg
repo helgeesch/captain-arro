@@ -34,12 +34,12 @@
             
         @keyframes moveLeft {
           0% { transform: translateX(0px); }
-          100% { transform: translateX(45px); }
+          100% { transform: translateX(45.0px); }
         }
 
         @keyframes moveRight {
           0% { transform: translateX(0px); }
-          100% { transform: translateX(-45px); }
+          100% { transform: translateX(-45.0px); }
         }
           </style>
 

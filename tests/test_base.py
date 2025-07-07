@@ -42,7 +42,7 @@ class TestAnimatedArrowGeneratorBase:
         assert generator.stroke_width == 10
         assert generator.width == 100
         assert generator.height == 100
-        assert generator.speed == 20.0
+        assert generator.speed_in_px_per_second == 20.0
         assert generator.num_arrows == 4
 
     def test_init_custom_values(self):
@@ -52,7 +52,7 @@ class TestAnimatedArrowGeneratorBase:
             stroke_width=15,
             width=200,
             height=150,
-            speed=30.0,
+            speed_in_px_per_second=30.0,
             num_arrows=6
         )
         
@@ -60,7 +60,7 @@ class TestAnimatedArrowGeneratorBase:
         assert generator.stroke_width == 15
         assert generator.width == 200
         assert generator.height == 150
-        assert generator.speed == 30.0
+        assert generator.speed_in_px_per_second == 30.0
         assert generator.num_arrows == 6
 
     def test_num_arrows_validation(self):
