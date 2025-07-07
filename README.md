@@ -51,7 +51,7 @@ generator = MovingFlowArrowGenerator(
     num_arrows=6,
     width=150,
     height=100,
-    speed=25,
+    speed_in_px_per_second=25,
     animation="ease-in-out"
 )
 ```
@@ -72,7 +72,7 @@ generator = SpotlightFlowArrowGenerator(
         num_arrows=3,
         width=180,
         height=120,
-        speed=40.0,
+        speed_in_px_per_second=40.0,
         spotlight_size=0.3,
         dim_opacity=0.5
 )
@@ -94,7 +94,7 @@ generator = BouncingSpreadArrowGenerator(
         num_arrows=4,
         width=250,
         height=100,
-        speed=15.0,
+        speed_in_px_per_second=15.0,
         animation="ease-in-out",
         center_gap_ratio=0.3,
         stroke_width=10
@@ -118,7 +118,7 @@ generator = SpotlightSpreadArrowGenerator(
         num_arrows=8,
         width=300,
         height=100,
-        speed=100.0,
+        speed_in_px_per_second=100.0,
         spotlight_size=0.25,
         dim_opacity=0.5,
         center_gap_ratio=0.3,
@@ -174,7 +174,7 @@ from captain_arro import MovingFlowArrowGenerator
 # Fast linear animation upward
 generator = MovingFlowArrowGenerator(
     direction="up",
-    speed=50.0,
+    speed_in_px_per_second=50.0,
     animation="linear",
     num_arrows=6
 )
