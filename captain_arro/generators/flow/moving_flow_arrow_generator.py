@@ -13,6 +13,8 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
             direction: FLOW_DIRECTIONS = "right",
             num_arrows: int = 4,
             animation: ANIMATION_TYPES = "ease-in-out",
+            speed_in_px_per_second: float = None,
+            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
@@ -20,7 +22,9 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
             width=width,
             height=height,
             speed=speed,
-            num_arrows=num_arrows
+            num_arrows=num_arrows,
+            speed_in_px_per_second=speed_in_px_per_second,
+            speed_in_duration_seconds=speed_in_duration_seconds
         )
         self.direction = direction.lower()
         self.animation = animation
@@ -76,19 +80,14 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
         else:
             raise ValueError(f"Invalid direction: {self.direction}. Use 'up', 'down', 'left', or 'right'.")
 
-    def _get_transform_distance(self) -> int:
+    def _get_transform_distance(self) -> float:
         if self.direction in ["up", "down"]:
-            return self.height // 2
+            return float(self.height // 2 * 2)  # Total distance for moving flow
         else:
-            return self.width // 2
-
-    def _calculate_animation_duration(self) -> float:
-        transform_distance = self._get_transform_distance()
-        total_distance = 2 * transform_distance
-        return total_distance / self.speed
+            return float(self.width // 2 * 2)  # Total distance for moving flow
 
     def _generate_animations(self) -> str:
-        distance = self._get_transform_distance()
+        distance = self._get_transform_distance() // 2  # Half distance for start/end positions
 
         if self.direction == "down":
             start_transform = f"translateY(-{distance}px)"

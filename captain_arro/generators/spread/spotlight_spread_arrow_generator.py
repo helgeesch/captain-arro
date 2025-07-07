@@ -16,6 +16,8 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             spotlight_path_extension_factor: float = 0.5,
             dim_opacity: float = 0.2,
             center_gap_ratio: float = 0.2,
+            speed_in_px_per_second: float = None,
+            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
@@ -23,7 +25,9 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             width=width,
             height=height,
             speed=speed,
-            num_arrows=max(2, num_arrows)
+            num_arrows=max(2, num_arrows),
+            speed_in_px_per_second=speed_in_px_per_second,
+            speed_in_duration_seconds=speed_in_duration_seconds
         )
         self.direction = direction.lower()
         self.spotlight_size = max(0.1, min(1.0, spotlight_size))
@@ -344,12 +348,11 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         offset_y = layout["arrow_height"] // 2
         return f"{-offset_x},{-offset_y} 0,{offset_y} {offset_x},{-offset_y}"
 
-    def _calculate_animation_duration(self) -> float:
+    def _get_transform_distance(self) -> float:
         if self.direction == "vertical":
-            total_distance = self.height
+            return float(self.height)
         else:
-            total_distance = self.width
-        return total_distance / self.speed
+            return float(self.width)
 
     def _generate_animations(self) -> str:
         """Return empty string since animations are handled by gradient transforms."""

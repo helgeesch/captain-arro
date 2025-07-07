@@ -14,6 +14,8 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             num_arrows: int = 6,
             animation: ANIMATION_TYPES = "ease-in-out",
             center_gap_ratio: float = 0.2,
+            speed_in_px_per_second: float = None,
+            speed_in_duration_seconds: float = None,
     ):
         super().__init__(
             color=color,
@@ -21,7 +23,9 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
             width=width,
             height=height,
             speed=speed,
-            num_arrows=max(2, num_arrows)
+            num_arrows=max(2, num_arrows),
+            speed_in_px_per_second=speed_in_px_per_second,
+            speed_in_duration_seconds=speed_in_duration_seconds
         )
         self.direction = direction.lower()
         self.animation = animation
@@ -272,17 +276,14 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         offset_y = layout["arrow_height"] // 2
         return f"{-offset_x},{-offset_y} 0,{offset_y} {offset_x},{-offset_y}"
 
-    def _get_transform_distance(self) -> int:
+    def _get_transform_distance(self) -> float:
         if self.direction == "vertical":
             available_space = self.height - 2 * (self.height // 8)
-            return int(available_space * 0.15)
+            return float(available_space * 0.15)
         else:
             available_space = self.width - 2 * (self.width // 8)
-            return int(available_space * 0.15)
+            return float(available_space * 0.15)
 
-    def _calculate_animation_duration(self) -> float:
-        transform_distance = self._get_transform_distance()
-        return transform_distance / self.speed
 
     def _generate_animations(self) -> str:
         distance = self._get_transform_distance()
