@@ -1,5 +1,7 @@
 from captain_arro.generators.base import AnimatedArrowGeneratorBase
 from captain_arro.constants import ANIMATION_TYPES, SPREAD_DIRECTIONS
+from typing import Union
+import uuid
 
 
 class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
@@ -29,13 +31,14 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         self.animation = animation
         self.center_gap_ratio = max(0.1, min(0.4, center_gap_ratio))
 
-    def generate_svg(self) -> str:
+    def generate_svg(self, unique_id: Union[bool, str] = True) -> str:
         """Override to customize the arrow groups and animations."""
+        
         clip_bounds = self._get_clip_bounds()
         animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
 
-        return f"""
+        svg = f"""
         <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
@@ -76,6 +79,21 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
           </g>
         </svg>
         """
+        
+        # Apply unique suffixes if requested
+        if unique_id is not False:
+            if unique_id is True:
+                # Generate random suffix
+                suffix = uuid.uuid4().hex[:6]
+            else:
+                # Use provided suffix
+                suffix = str(unique_id)
+            
+            # Get the list of IDs that need to be made unique
+            id_keys = self._get_unique_id_keys()
+            svg = self._apply_unique_suffix(svg, suffix, id_keys)
+        
+        return svg
 
     def _generate_arrow_elements(self) -> str:
         arrows_per_side = self.num_arrows // 2
@@ -308,6 +326,21 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
           0% {{ transform: translateY(0px); }}
           100% {{ transform: translateY(-{distance}px); }}
         }}"""
+
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        return [
+            "arrowClip", 
+            "arrow", 
+            "group-left", 
+            "group-right", 
+            "group-top", 
+            "group-bottom",
+            "moveLeft",
+            "moveRight", 
+            "moveTop", 
+            "moveBottom"
+        ]
 
 
 if __name__ == "__main__":

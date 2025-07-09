@@ -1,5 +1,7 @@
 from captain_arro.generators.base import AnimatedArrowGeneratorBase
 from captain_arro.constants import SPREAD_DIRECTIONS
+from typing import Union
+import uuid
 
 
 class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
@@ -33,14 +35,15 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         self.spotlight_path_extension_factor = spotlight_path_extension_factor
         self.center_gap_ratio = max(0.1, min(0.4, center_gap_ratio))
 
-    def generate_svg(self) -> str:
+    def generate_svg(self, unique_id: Union[bool, str] = True) -> str:
         """Override to customize arrow styles with directional gradients."""
+        
         clip_bounds = self._get_clip_bounds()
         animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
         gradient_defs = self._generate_gradient_defs()
 
-        return f"""
+        svg = f"""
         <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
@@ -90,6 +93,21 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
           </g>
         </svg>
         """
+        
+        # Apply unique suffixes if requested
+        if unique_id is not False:
+            if unique_id is True:
+                # Generate random suffix
+                suffix = uuid.uuid4().hex[:6]
+            else:
+                # Use provided suffix
+                suffix = str(unique_id)
+            
+            # Get the list of IDs that need to be made unique
+            id_keys = self._get_unique_id_keys()
+            svg = self._apply_unique_suffix(svg, suffix, id_keys)
+        
+        return svg
 
     def _generate_gradient_defs(self) -> str:
         duration = self.speed_in_duration_seconds
@@ -355,6 +373,20 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     def _generate_animations(self) -> str:
         """Return empty string since animations are handled by gradient transforms."""
         return ""
+
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        return [
+            "arrowClip",
+            "spotlightGradientLeft",
+            "spotlightGradientRight", 
+            "spotlightGradientTop",
+            "spotlightGradientBottom",
+            "arrow-left",
+            "arrow-right",
+            "arrow-top", 
+            "arrow-bottom"
+        ]
 
 
 if __name__ == "__main__":
