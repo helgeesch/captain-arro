@@ -4,6 +4,8 @@ Base class for arrow generators.
 
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Optional, Union
+import re
+import uuid
 
 
 class AnimatedArrowGeneratorBase(ABC):
@@ -62,17 +64,94 @@ class AnimatedArrowGeneratorBase(ABC):
         """Get the transform distance for animation calculations."""
         pass
     
+    @abstractmethod
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        pass
+    
     def _calculate_animation_duration(self) -> float:
         """Calculate the appropriate animation duration based on speed options."""
         return self.speed_in_duration_seconds
     
-    def generate_svg(self) -> str:
-        """Generate the complete SVG string."""
+    def _apply_unique_suffix(self, svg: str, suffix: str, id_keys: list[str]) -> str:
+        """
+        Apply a unique suffix to SVG IDs, classes, and references to avoid collisions.
+        
+        Args:
+            svg: The SVG string to process
+            suffix: The suffix to append to identifiers  
+            id_keys: List of base identifiers to make unique
+            
+        Returns:
+            Modified SVG string with unique identifiers
+        """
+        modified_svg = svg
+        
+        for base_id in id_keys:
+            unique_id = f"{base_id}-{suffix}"
+            
+            # Replace ID definitions: id="baseId" -> id="baseId-suffix"
+            modified_svg = re.sub(
+                rf'id="{re.escape(base_id)}"',
+                f'id="{unique_id}"',
+                modified_svg
+            )
+            
+            # Replace URL references: url(#baseId) -> url(#baseId-suffix)
+            modified_svg = re.sub(
+                rf'url\(#{re.escape(base_id)}\)',
+                f'url(#{unique_id})',
+                modified_svg
+            )
+            
+            # Replace CSS class definitions: .baseId -> .baseId-suffix
+            modified_svg = re.sub(
+                rf'\.{re.escape(base_id)}(?=\s*\{{)',
+                f'.{unique_id}',
+                modified_svg
+            )
+            
+            # Replace CSS class usage in HTML: class="baseId" -> class="baseId-suffix"
+            modified_svg = re.sub(
+                rf'class="([^"]*\b){re.escape(base_id)}(\b[^"]*)"',
+                rf'class="\1{unique_id}\2"',
+                modified_svg
+            )
+            
+            # Replace @keyframes names: @keyframes baseId -> @keyframes baseId-suffix
+            modified_svg = re.sub(
+                rf'@keyframes\s+{re.escape(base_id)}(?=\s*\{{)',
+                f'@keyframes {unique_id}',
+                modified_svg
+            )
+            
+            # Replace animation property references: animation: baseId -> animation: baseId-suffix
+            modified_svg = re.sub(
+                rf'animation:\s+{re.escape(base_id)}(?=\s)',
+                f'animation: {unique_id}',
+                modified_svg
+            )
+        
+        return modified_svg
+    
+    def generate_svg(self, unique_id: Union[bool, str] = True) -> str:
+        """
+        Generate the complete SVG string.
+        
+        Args:
+            unique_id: Controls ID uniqueness behavior:
+                - False: Use default IDs (may cause collisions)
+                - True: Generate random suffix for unique IDs
+                - str: Use provided string as suffix for IDs
+                
+        Returns:
+            SVG string with optionally unique identifiers
+        """
         clip_bounds = self._get_clip_bounds()
         animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
         
-        return f"""
+        svg = f"""
         <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <clipPath id="arrowClip">
@@ -100,6 +179,21 @@ class AnimatedArrowGeneratorBase(ABC):
           </g>
         </svg>
         """
+        
+        # Apply unique suffixes if requested
+        if unique_id is not False:
+            if unique_id is True:
+                # Generate random suffix
+                suffix = uuid.uuid4().hex[:6]
+            else:
+                # Use provided suffix
+                suffix = str(unique_id)
+            
+            # Get the list of IDs that need to be made unique
+            id_keys = self._get_unique_id_keys()
+            svg = self._apply_unique_suffix(svg, suffix, id_keys)
+        
+        return svg
     
     def _get_clip_bounds(self) -> Dict[str, int]:
         """Get the clipping bounds for the SVG."""
@@ -111,8 +205,8 @@ class AnimatedArrowGeneratorBase(ABC):
             "height": self.height
         }
     
-    def save_to_file(self, file_path: str) -> None:
+    def save_to_file(self, file_path: str, unique_id: Union[bool, str] = True) -> None:
         """Save the generated SVG to a file."""
-        svg_content = self.generate_svg()
+        svg_content = self.generate_svg(unique_id=unique_id)
         with open(file_path, 'w') as file:
             file.write(svg_content)
