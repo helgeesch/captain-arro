@@ -112,9 +112,10 @@ class AnimatedArrowGeneratorBase(ABC):
             )
             
             # Replace CSS class usage in HTML: class="baseId" -> class="baseId-suffix"
+            # Handle both single class and multiple classes in class attribute
             modified_svg = re.sub(
-                rf'class="([^"]*\b){re.escape(base_id)}(\b[^"]*)"',
-                rf'class="\1{unique_id}\2"',
+                rf'class="([^"]*?)(\b{re.escape(base_id)}\b)([^"]*?)"',
+                rf'class="\1{unique_id}\3"',
                 modified_svg
             )
             
