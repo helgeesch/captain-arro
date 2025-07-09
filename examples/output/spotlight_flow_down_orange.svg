@@ -1,11 +1,11 @@
 
         <svg width="60" height="150" viewBox="0 0 60 150" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip">
+            <clipPath id="arrowClip-5297c6">
               <rect x="0" y="0" width="60" height="150"/>
             </clipPath>
             
-        <linearGradient id="spotlightGradient" x1="0" y1="0" x2="0" y2="150" gradientUnits="userSpaceOnUse">
+        <linearGradient id="spotlightGradient-5297c6" x1="0" y1="0" x2="0" y2="150" gradientUnits="userSpaceOnUse">
           <animateTransform
             attributeName="gradientTransform"
             type="translate"
@@ -23,8 +23,8 @@
           </defs>
         
           <style>
-            .arrow {
-              stroke: url(#spotlightGradient);
+            .arrow-5297c6 {
+              stroke: url(#spotlightGradient-5297c6);
               stroke-width: 10;
               stroke-linecap: round;
               stroke-linejoin: round;
@@ -32,7 +32,7 @@
             }
             
             
-        @keyframes spotlight {
+        @keyframes spotlight-5297c6 {
           0% {
             transform: translateY(-150px);
           }
@@ -43,12 +43,12 @@
         
           </style>
         
-          <g clip-path="url(#arrowClip)">
-                <g class="arrow">
+          <g clip-path="url(#arrowClip-5297c6)">
+                <g class="arrow-5297c6">
       <polyline points="15,42 30,78 45,42"/>
     </g>
     
-    <g class="arrow">
+    <g class="arrow-5297c6">
       <polyline points="15,72 30,108 45,72"/>
     </g>
           </g>

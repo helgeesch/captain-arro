@@ -1,11 +1,11 @@
 
         <svg width="300" height="100" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip">
+            <clipPath id="arrowClip-203da7">
               <rect x="0" y="0" width="300" height="100"/>
             </clipPath>
             
-        <linearGradient id="spotlightGradientLeft" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+        <linearGradient id="spotlightGradientLeft-203da7" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
           <animateTransform
             attributeName="gradientTransform"
             type="translate"
@@ -19,7 +19,7 @@
           <stop offset="100%" stop-color="#6366f1" stop-opacity="0.5"/>
         </linearGradient>
 
-        <linearGradient id="spotlightGradientRight" x1="-300" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+        <linearGradient id="spotlightGradientRight-203da7" x1="-300" y1="0" x2="0" y2="0" gradientUnits="userSpaceOnUse">
           <animateTransform
             attributeName="gradientTransform"
             type="translate"
@@ -35,32 +35,32 @@
           </defs>
 
           <style>
-            .arrow-left {
-              stroke: url(#spotlightGradientLeft);
+            .arrow-left-203da7 {
+              stroke: url(#spotlightGradientLeft-203da7);
               stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
             }
 
-            .arrow-right {
-              stroke: url(#spotlightGradientRight);
+            .arrow-right-203da7 {
+              stroke: url(#spotlightGradientRight-203da7);
               stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
             }
 
-            .arrow-top {
-              stroke: url(#spotlightGradientTop);
+            .arrow-top-203da7 {
+              stroke: url(#spotlightGradientTop-203da7);
               stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
               fill: none;
             }
 
-            .arrow-bottom {
-              stroke: url(#spotlightGradientBottom);
+            .arrow-bottom-203da7 {
+              stroke: url(#spotlightGradientBottom-203da7);
               stroke-width: 12;
               stroke-linecap: round;
               stroke-linejoin: round;
@@ -70,36 +70,36 @@
             
           </style>
 
-          <g clip-path="url(#arrowClip)">
-                <g class="arrow-left" style="transform: translate(98px, 50px)">
+          <g clip-path="url(#arrowClip-203da7)">
+                <g class="arrow-left-203da7" style="transform: translate(98px, 50px)">
       <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(72px, 50px)">
+    <g class="arrow-left-203da7" style="transform: translate(72px, 50px)">
       <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(46px, 50px)">
+    <g class="arrow-left-203da7" style="transform: translate(46px, 50px)">
       <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-left" style="transform: translate(20px, 50px)">
+    <g class="arrow-left-203da7" style="transform: translate(20px, 50px)">
       <polyline points="13,-40 -13,0 13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(202px, 50px)">
+    <g class="arrow-right-203da7" style="transform: translate(202px, 50px)">
       <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(228px, 50px)">
+    <g class="arrow-right-203da7" style="transform: translate(228px, 50px)">
       <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(254px, 50px)">
+    <g class="arrow-right-203da7" style="transform: translate(254px, 50px)">
       <polyline points="-13,-40 13,0 -13,40"/>
     </g>
     
-    <g class="arrow-right" style="transform: translate(280px, 50px)">
+    <g class="arrow-right-203da7" style="transform: translate(280px, 50px)">
       <polyline points="-13,-40 13,0 -13,40"/>
     </g>
           </g>
