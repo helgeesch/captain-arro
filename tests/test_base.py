@@ -15,6 +15,12 @@ class ConcreteArrowGenerator(AnimatedArrowGeneratorBase):
     
     def _generate_animations(self) -> str:
         return '@keyframes test { 0% { opacity: 0; } 100% { opacity: 1; } }'
+    
+    def _get_transform_distance(self) -> float:
+        return 100.0
+    
+    def _get_unique_id_keys(self) -> list[str]:
+        return ["arrowClip", "test"]
 
 
 class TestAnimatedArrowGeneratorBase:

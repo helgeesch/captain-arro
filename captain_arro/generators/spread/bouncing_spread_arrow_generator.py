@@ -309,6 +309,21 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
           100% {{ transform: translateY(-{distance}px); }}
         }}"""
 
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        return [
+            "arrowClip", 
+            "arrow", 
+            "group-left", 
+            "group-right", 
+            "group-top", 
+            "group-bottom",
+            "moveLeft",
+            "moveRight", 
+            "moveTop", 
+            "moveBottom"
+        ]
+
 
 if __name__ == "__main__":
     generator = BouncingSpreadArrowGenerator()

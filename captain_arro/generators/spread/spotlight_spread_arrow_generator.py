@@ -356,6 +356,20 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
         """Return empty string since animations are handled by gradient transforms."""
         return ""
 
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        return [
+            "arrowClip",
+            "spotlightGradientLeft",
+            "spotlightGradientRight", 
+            "spotlightGradientTop",
+            "spotlightGradientBottom",
+            "arrow-left",
+            "arrow-right",
+            "arrow-top", 
+            "arrow-bottom"
+        ]
+
 
 if __name__ == "__main__":
     generator = SpotlightSpreadArrowGenerator()

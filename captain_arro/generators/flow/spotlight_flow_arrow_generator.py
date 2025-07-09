@@ -206,6 +206,15 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         }}
         """
 
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        return [
+            "arrowClip",
+            "spotlightGradient", 
+            "arrow",
+            "spotlight"
+        ]
+
 
 if __name__ == "__main__":
     generator = SpotlightFlowArrowGenerator()

@@ -131,6 +131,17 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
 
         return "\n    ".join(animations)
 
+    def _get_unique_id_keys(self) -> list[str]:
+        """Get the list of ID keys that need to be made unique for this generator."""
+        # Base IDs that are always present
+        id_keys = ["arrowClip", "arrow"]
+        
+        # Add dynamic arrow class IDs based on num_arrows
+        for i in range(1, self.num_arrows + 1):
+            id_keys.extend([f"arrow{i}", f"flow{i}"])
+        
+        return id_keys
+
 
 if __name__ == "__main__":
     generator = MovingFlowArrowGenerator()
