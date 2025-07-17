@@ -160,7 +160,7 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         offset_pairs = []
 
         for pair in point_pairs:
-            x, y = map(int, pair.split(','))
+            x, y = map(lambda x: int(float(x)), pair.split(','))
             offset_pairs.append(f"{x + offset_x},{y + offset_y}")
 
         return " ".join(offset_pairs)
