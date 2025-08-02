@@ -36,16 +36,20 @@ def calculate_layout(canvas_width, canvas_height, num_arrows, center_gap_ratio, 
             "bounds_check": f"Leftmost tip: {min(positions) - arrow_width//2}, rightmost: {max(positions) + arrow_width//2}"
         }
     
-# Test cases
-test_cases = [
-    (300, 150, 6, 0.2, "horizontal"),  # Basic case
-    (250, 200, 4, 0.2, "horizontal"),  # Teal case  
-    (100, 200, 4, 0.2, "vertical"),   # Pink case
-]
+if __name__ == '__main__':
+    # Test cases
+    test_cases = [
+        (300, 150, 6, 0.2, "horizontal"),  # Basic case
+        (250, 200, 4, 0.2, "horizontal"),  # Teal case  
+        (100, 200, 4, 0.2, "vertical"),   # Pink case
+    ]
 
-for width, height, arrows, gap_ratio, direction in test_cases:
-    print(f"\nCanvas: {width}x{height}, {arrows} arrows, {direction}")
-    layout = calculate_layout(width, height, arrows, gap_ratio, direction)
-    print(f"Arrow size: {layout['arrow_width']}x{layout['arrow_height']}")
-    print(f"Positions: {layout['left_positions']}")
-    print(f"Bounds: {layout['bounds_check']}")
+    for width, height, arrows, gap_ratio, direction in test_cases:
+        print(f"\nCanvas: {width}x{height}, {arrows} arrows, {direction}")
+        layout = calculate_layout(width, height, arrows, gap_ratio, direction)
+        if layout:
+            print(f"Arrow size: {layout['arrow_width']}x{layout['arrow_height']}")
+            print(f"Positions: {layout['left_positions']}")
+            print(f"Bounds: {layout['bounds_check']}")
+        else:
+            print("Layout calculation returned None")

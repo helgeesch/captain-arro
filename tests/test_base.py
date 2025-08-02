@@ -33,7 +33,7 @@ class TestAnimatedArrowGeneratorBase:
 
     def test_concrete_implementation_can_be_instantiated(self):
         """Test that concrete implementation can be instantiated."""
-        generator = ConcreteArrowGenerator()
+        generator = ConcreteArrowGenerator(speed_in_px_per_second=20.0)
         
         assert isinstance(generator, AnimatedArrowGeneratorBase)
         assert generator.color == "#2563eb"
@@ -42,7 +42,7 @@ class TestAnimatedArrowGeneratorBase:
 
     def test_init_default_values(self):
         """Test base class initialization with default values."""
-        generator = ConcreteArrowGenerator()
+        generator = ConcreteArrowGenerator(speed_in_px_per_second=20.0)
         
         assert generator.color == "#2563eb"
         assert generator.stroke_width == 10
@@ -71,23 +71,23 @@ class TestAnimatedArrowGeneratorBase:
 
     def test_num_arrows_validation(self):
         """Test that num_arrows is validated to minimum 1."""
-        generator = ConcreteArrowGenerator(num_arrows=0)
+        generator = ConcreteArrowGenerator(num_arrows=0, speed_in_px_per_second=20.0)
         assert generator.num_arrows == 1
         
-        generator = ConcreteArrowGenerator(num_arrows=-5)
+        generator = ConcreteArrowGenerator(num_arrows=-5, speed_in_px_per_second=20.0)
         assert generator.num_arrows == 1
 
     def test_stroke_width_validation(self):
         """Test that stroke_width is validated to minimum 2."""
-        generator = ConcreteArrowGenerator(stroke_width=1)
+        generator = ConcreteArrowGenerator(stroke_width=1, speed_in_px_per_second=20.0)
         assert generator.stroke_width == 2
         
-        generator = ConcreteArrowGenerator(stroke_width=-10)
+        generator = ConcreteArrowGenerator(stroke_width=-10, speed_in_px_per_second=20.0)
         assert generator.stroke_width == 2
 
     def test_generate_svg_template_method(self):
         """Test that generate_svg template method works."""
-        generator = ConcreteArrowGenerator()
+        generator = ConcreteArrowGenerator(speed_in_px_per_second=20.0)
         svg = generator.generate_svg()
         
         assert isinstance(svg, str)
@@ -98,7 +98,7 @@ class TestAnimatedArrowGeneratorBase:
 
     def test_get_clip_bounds_default(self):
         """Test default clip bounds calculation."""
-        generator = ConcreteArrowGenerator(width=100, height=200)
+        generator = ConcreteArrowGenerator(width=100, height=200, speed_in_px_per_second=20.0)
         bounds = generator._get_clip_bounds()
         
         assert bounds["x"] == 0  # no margin
@@ -108,7 +108,7 @@ class TestAnimatedArrowGeneratorBase:
 
     def test_save_to_file(self, tmp_path):
         """Test saving SVG to file."""
-        generator = ConcreteArrowGenerator()
+        generator = ConcreteArrowGenerator(speed_in_px_per_second=20.0)
         file_path = tmp_path / "test_base.svg"
         
         generator.save_to_file(str(file_path))

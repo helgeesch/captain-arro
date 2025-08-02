@@ -5,6 +5,23 @@ import uuid
 
 
 class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
+    """
+    Generates animated SVG arrows with a moving spotlight effect that highlights different parts.
+    
+    This generator creates arrows that flow in the specified direction while a spotlight effect
+    moves along them, creating a dynamic lighting animation. The non-highlighted areas are dimmed
+    to create visual contrast. Perfect for drawing attention to specific flow directions or
+    creating sophisticated visual indicators.
+    
+    Example:
+        >>> generator = SpotlightFlowArrowGenerator(
+        ...     direction="right", 
+        ...     color="#8b5cf6",
+        ...     spotlight_size=0.3,
+        ...     dim_opacity=0.5
+        ... )
+        >>> svg_content = generator.generate_svg()
+    """
     def __init__(
             self,
             color: str = "#2563eb",

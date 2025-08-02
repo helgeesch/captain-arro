@@ -7,7 +7,7 @@ name = "captain-arro"
 version = "0.1.0"
 description = "Animated SVG arrow generators for web interfaces"
 readme = "README.md"
-license = {file = "LICENSE"}
+license = "MIT"
 authors = [
     {name = "Helge Esch"}
 ]
@@ -17,7 +17,6 @@ maintainers = [
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",

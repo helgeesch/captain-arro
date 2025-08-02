@@ -14,7 +14,6 @@ from .constants import ANIMATION_TYPES, FLOW_DIRECTIONS, SPREAD_DIRECTIONS
 
 __version__ = "0.1.0"
 __author__ = "Helge Esch"
-__email__ = "helge@example.com"
 
 __all__ = [
     "MovingFlowArrowGenerator",
