@@ -14,7 +14,6 @@ from .constants import ANIMATION_TYPES, FLOW_DIRECTIONS, SPREAD_DIRECTIONS, Arro
 
 __version__ = "0.1.0"
 __author__ = "Helge Esch"
-__email__ = "helge@example.com"
 
 
 def get_generator_for_arrow_type(arrow_type: ArrowTypeEnum) -> type[AnimatedArrowGeneratorBase]:

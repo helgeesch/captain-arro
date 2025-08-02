@@ -3,6 +3,18 @@ from captain_arro.constants import ANIMATION_TYPES, FLOW_DIRECTIONS
 
 
 class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
+    """
+    Generates animated SVG arrows that move continuously in one direction with a flowing animation.
+    
+    This generator creates arrows that smoothly flow across the screen in the specified direction
+    (up, down, left, or right) with customizable speed, colors, and animation timing functions.
+    Perfect for indicating data flow, navigation direction, or process progression.
+    
+    Example:
+        >>> generator = MovingFlowArrowGenerator(direction="right", color="#3b82f6")
+        >>> svg_content = generator.generate_svg()
+        >>> generator.save_to_file("flow_arrow.svg")
+    """
     def __init__(
             self,
             color: str = "#2563eb",

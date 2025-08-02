@@ -5,6 +5,23 @@ import uuid
 
 
 class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
+    """
+    Generates animated SVG arrows that spread outward from center with a bouncing animation.
+    
+    This generator creates arrows that emanate from the center of the canvas and spread outward
+    in either horizontal or vertical directions with a smooth bouncing animation effect.
+    The arrows appear to push away from a central gap, creating a dynamic spreading pattern.
+    Perfect for indicating expansion, distribution, or divergent processes.
+    
+    Example:
+        >>> generator = BouncingSpreadArrowGenerator(
+        ...     direction="horizontal",
+        ...     color="#14b8a6",
+        ...     center_gap_ratio=0.3,
+        ...     animation="ease-in-out"
+        ... )
+        >>> svg_content = generator.generate_svg()
+    """
     def __init__(
             self,
             color: str = "#2563eb",

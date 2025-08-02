@@ -5,6 +5,25 @@ import uuid
 
 
 class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
+    """
+    Generates animated SVG arrows that spread outward from center with spotlight effects.
+    
+    This generator combines the spreading pattern of bouncing arrows with the dynamic lighting
+    effects of spotlight animations. Arrows emanate from the center gap and spread outward
+    while a moving spotlight effect travels along them, creating sophisticated visual emphasis.
+    The non-highlighted areas are dimmed to enhance the spotlight effect.
+    Perfect for drawing attention to distribution patterns or highlighting data flow from a central source.
+    
+    Example:
+        >>> generator = SpotlightSpreadArrowGenerator(
+        ...     direction="horizontal",
+        ...     color="#6366f1",
+        ...     spotlight_size=0.25,
+        ...     dim_opacity=0.5,
+        ...     center_gap_ratio=0.3
+        ... )
+        >>> svg_content = generator.generate_svg()
+    """
     def __init__(
             self,
             color: str = "#2563eb",
