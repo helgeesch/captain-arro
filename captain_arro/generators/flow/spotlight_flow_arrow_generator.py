@@ -1,24 +1,25 @@
+from typing import Union, Tuple
+import uuid
+
 from captain_arro.generators.base import AnimatedArrowGeneratorBase
 from captain_arro.constants import FLOW_DIRECTIONS
-from typing import Union
-import uuid
 
 
 class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
     def __init__(
-            self,
-            color: str = "#2563eb",
-            stroke_width: int = 10,
-            width: int = 100,
-            height: int = 100,
-            speed_in_px_per_second: float = 20.0,
-            speed_in_duration_seconds: float = None,
-            direction: FLOW_DIRECTIONS = "right",
-            num_arrows: int = 3,
-            spotlight_size: float = 0.3,
-            spotlight_path_extension_factor: float = 0.5,
-            dim_opacity: float = 0.2,
-    ):
+        self,
+        color: str = "#2563eb",
+        stroke_width: int = 10,
+        width: int = 100,
+        height: int = 100,
+        speed_in_px_per_second: float = 20.0,
+        speed_in_duration_seconds: float | None = None,
+        direction: FLOW_DIRECTIONS = "right",
+        num_arrows: int = 3,
+        spotlight_size: float = 0.3,
+        spotlight_path_extension_factor: float = 0.5,
+        dim_opacity: float = 0.2,
+    ) -> None:
         super().__init__(
             color=color,
             stroke_width=stroke_width,
@@ -34,13 +35,12 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
         self.dim_opacity = max(0.0, min(1.0, dim_opacity))
 
     def generate_svg(self, unique_id: Union[bool, str] = True) -> str:
-        """Override to customize the arrow style for spotlight effect."""
-        
         clip_bounds = self._get_clip_bounds()
         animations = self._generate_animations()
         arrow_elements = self._generate_arrow_elements()
+        # keep the old name but return mask defs inside
         gradient_defs = self._generate_gradient_defs()
-        
+
         svg = f"""
         <svg width="{self.width}" height="{self.height}" viewBox="0 0 {self.width} {self.height}" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -49,188 +49,183 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
             </clipPath>
             {gradient_defs}
           </defs>
-        
+
           <style>
-            .arrow {{
-              stroke: url(#spotlightGradient);
-              stroke-width: {self.stroke_width};
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }}
-            
             {animations}
           </style>
-        
+
           <g clip-path="url(#arrowClip)">
             {arrow_elements}
           </g>
         </svg>
         """
-        
-        # Apply unique suffixes if requested
+
         if unique_id is not False:
-            if unique_id is True:
-                # Generate random suffix
-                suffix = uuid.uuid4().hex[:6]
-            else:
-                # Use provided suffix
-                suffix = str(unique_id)
-            
-            # Get the list of IDs that need to be made unique
-            id_keys = self._get_unique_id_keys()
-            svg = self._apply_unique_suffix(svg, suffix, id_keys)
-        
+            suffix = uuid.uuid4().hex[:6] if unique_id is True else str(unique_id)
+            svg = self._apply_unique_suffix(svg, suffix, self._get_unique_id_keys())
         return svg
 
-    def _generate_gradient_defs(self) -> str:
-        duration = self.speed_in_duration_seconds
+    def _sweep_axis(self) -> str:
+        return "x" if self.direction in ["left", "right"] else "y"
 
-        if self.direction in ["up", "down"]:
-            gradient_attrs = f'x1="0" y1="0" x2="0" y2="{self.height}" gradientUnits="userSpaceOnUse"'
-            if self.direction == "down":
-                from_transform = f"0 -{self.height}"
-                to_transform = f"0 {self.height * self.spotlight_path_extension_factor}"
-            else:  # up
-                from_transform = f"0 {self.height * self.spotlight_path_extension_factor}"
-                to_transform = f"0 -{self.height}"
+    def _sweep_rect_dims(self) -> Tuple[float, float]:
+        if self._sweep_axis() == "x":
+            rect_w = self.width * (0.6 + 0.4 * max(0.0, self.spotlight_path_extension_factor))
+            rect_h = self.height * 2.0
         else:
-            gradient_attrs = f'x1="0" y1="0" x2="{self.width}" y2="0" gradientUnits="userSpaceOnUse"'
-            if self.direction == "right":
-                from_transform = f"-{self.width} 0"
-                to_transform = f"{self.width * self.spotlight_path_extension_factor} 0"
-            else:  # left
-                from_transform = f"{self.width * self.spotlight_path_extension_factor} 0"
-                to_transform = f"-{self.width} 0"
+            rect_w = self.width * 2.0
+            rect_h = self.height * (0.6 + 0.4 * max(0.0, self.spotlight_path_extension_factor))
+        return float(rect_w), float(rect_h)
 
-        spotlight_percent = self.spotlight_size * 100
-        dim_before = (100 - spotlight_percent) / 2
-        dim_after = dim_before + spotlight_percent
-
+    def _generate_gradient_defs(self) -> str:
+        grad_id = "maskGrad"
+        mask_id = "sweepMask"
+        spotlight_pct = self.spotlight_size * 100.0
+        a = max(0.0, min(50.0, (100.0 - spotlight_pct) / 2.0))
+        b = 100.0 - a
+        rect_w, rect_h = self._sweep_rect_dims()
+        rect_x = (self.width - rect_w) / 2.0
+        rect_y = (self.height - rect_h) / 2.0
+        if self._sweep_axis() == "x":
+            grad_axis = 'x1="0" y1="0" x2="1" y2="0"'
+        else:
+            grad_axis = 'x1="0" y1="0" x2="0" y2="1"'
         return f"""
-        <linearGradient id="spotlightGradient" {gradient_attrs}>
-          <animateTransform
-            attributeName="gradientTransform"
-            type="translate"
-            from="{from_transform}"
-            to="{to_transform}"
-            dur="{duration:.2f}s"
-            repeatCount="indefinite"/>
-          <stop offset="0%" stop-color="{self.color}" stop-opacity="{self.dim_opacity}"/>
-          <stop offset="{dim_before:.1f}%" stop-color="{self.color}" stop-opacity="{self.dim_opacity}"/>
-          <stop offset="50%" stop-color="{self.color}" stop-opacity="1"/>
-          <stop offset="{dim_after:.1f}%" stop-color="{self.color}" stop-opacity="{self.dim_opacity}"/>
-          <stop offset="100%" stop-color="{self.color}" stop-opacity="{self.dim_opacity}"/>
+        <linearGradient id="{grad_id}" {grad_axis}>
+          <stop offset="0%" stop-color="black" stop-opacity="0"/>
+          <stop offset="{a:.1f}%" stop-color="white" stop-opacity="1"/>
+          <stop offset="{b:.1f}%" stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="black" stop-opacity="0"/>
         </linearGradient>
+        <mask id="{mask_id}" maskUnits="userSpaceOnUse" x="0" y="0" width="{self.width}" height="{self.height}">
+          <rect class="sweep-rect" x="{rect_x:.2f}" y="{rect_y:.2f}" width="{rect_w:.2f}" height="{rect_h:.2f}" fill="url(#{grad_id})"/>
+        </mask>
+        """
+
+    def _generate_animations(self) -> str:
+        dur = self._duration_seconds()
+        rect_w, rect_h = self._sweep_rect_dims()
+        if self._sweep_axis() == "x":
+            travel = (self.width + rect_w) / 2.0
+            if self.direction == "right":
+                start_t, end_t = f"translateX(-{travel:.2f}px)", f"translateX({travel:.2f}px)"
+            else:
+                start_t, end_t = f"translateX({travel:.2f}px)", f"translateX(-{travel:.2f}px)"
+        else:
+            travel = (self.height + rect_h) / 2.0
+            if self.direction == "down":
+                start_t, end_t = f"translateY(-{travel:.2f}px)", f"translateY({travel:.2f}px)"
+            else:
+                start_t, end_t = f"translateY({travel:.2f}px)", f"translateY(-{travel:.2f}px)"
+        return f"""
+        .arrow-dim polyline {{
+          stroke: {self.color};
+          stroke-opacity: {self.dim_opacity};
+          stroke-width: {self.stroke_width};
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }}
+        .arrow-hi polyline {{
+          stroke: {self.color};
+          stroke-width: {self.stroke_width};
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          mask: url(#sweepMask);
+        }}
+        @keyframes sweep {{
+          0% {{ transform: {start_t}; }}
+          100% {{ transform: {end_t}; }}
+        }}
+        .sweep-rect {{
+          animation: sweep {dur:.2f}s linear infinite;
+          transform-box: fill-box;
+          transform-origin: center;
+        }}
         """
 
     def _generate_arrow_elements(self) -> str:
-        elements = []
-
         spacing = self._calculate_arrow_spacing()
-
+        dim_parts: list[str] = []
+        hi_parts: list[str] = []
         for i in range(self.num_arrows):
             position = self._calculate_arrow_position(i, spacing)
-            elements.append(f'    <g class="arrow">\n      <polyline points="{position}"/>\n    </g>')
+            dim_parts.append(f'<polyline points="{position}"/>')
+            hi_parts.append(f'<polyline points="{position}"/>')
+        return f'''
+        <g class="arrow-dim">
+          {' '.join(dim_parts)}
+        </g>
+        <g class="arrow-hi">
+          {' '.join(hi_parts)}
+        </g>
+        '''.strip()
 
-        return "\n    \n".join(elements)
+    # --- helpers unchanged from your version ---
+    def _duration_seconds(self) -> float:
+        if self.speed_in_duration_seconds is not None:
+            return float(self.speed_in_duration_seconds)
+        distance = self._get_transform_distance() * (1.0 + self.spotlight_path_extension_factor)
+        v = max(1e-6, float(self.speed_in_px_per_second))
+        return distance / v
 
     def _calculate_arrow_spacing(self) -> int:
         if self.direction in ["up", "down"]:
             available_space = self.height - 2 * (self.height // 5)
-            return available_space // (self.num_arrows + 1)
+            return max(1, available_space // (self.num_arrows + 1))
         else:
             available_space = self.width - 2 * (self.width // 5)
-            return available_space // (self.num_arrows + 1)
+            return max(1, available_space // (self.num_arrows + 1))
 
     def _calculate_arrow_position(self, index: int, spacing: int) -> str:
         base_points = self._get_arrow_points()
-
         if self.direction in ["up", "down"]:
             margin = self.height // 5
-            offset_y = margin + (index + 1) * spacing - self.height // 2
-            return self._offset_points(base_points, 0, offset_y)
+            dy = margin + (index + 1) * spacing - self.height // 2
+            return self._offset_points(base_points, 0, dy)
         else:
             margin = self.width // 5
-            offset_x = margin + (index + 1) * spacing - self.width // 2
-            return self._offset_points(base_points, offset_x, 0)
+            dx = margin + (index + 1) * spacing - self.width // 2
+            return self._offset_points(base_points, dx, 0)
 
     def _offset_points(self, points: str, offset_x: int, offset_y: int) -> str:
-        point_pairs = points.split()
-        offset_pairs = []
-
-        for pair in point_pairs:
-            x, y = map(lambda x: int(float(x)), pair.split(','))
-            offset_pairs.append(f"{x + offset_x},{y + offset_y}")
-
-        return " ".join(offset_pairs)
+        out = []
+        for pair in points.split():
+            x, y = map(lambda x: int(float(x)), pair.split(","))
+            out.append(f"{x + offset_x},{y + offset_y}")
+        return " ".join(out)
 
     def _get_clip_bounds(self) -> dict[str, int]:
-        # Use full canvas area - no margins
-        return {
-            "x": 0,
-            "y": 0,
-            "width": self.width,
-            "height": self.height
-        }
+        return {"x": 0, "y": 0, "width": self.width, "height": self.height}
 
     def _get_arrow_points(self) -> str:
-        center_x = self.width // 2
-        center_y = self.height // 2
-        offset_x = self.width // 4  # Larger arrows
-        offset_y = self.height // 4  # Larger arrows
-
+        cx = self.width // 2
+        cy = self.height // 2
+        ox = self.width // 4
+        oy = self.height // 4
         if self.direction == "down":
-            return f"{center_x - offset_x},{center_y - offset_y // 2} {center_x},{center_y + offset_y // 2} {center_x + offset_x},{center_y - offset_y // 2}"
+            return f"{cx - ox},{cy - oy // 2} {cx},{cy + oy // 2} {cx + ox},{cy - oy // 2}"
         elif self.direction == "up":
-            return f"{center_x - offset_x},{center_y + offset_y // 2} {center_x},{center_y - offset_y // 2} {center_x + offset_x},{center_y + offset_y // 2}"
+            return f"{cx - ox},{cy + oy // 2} {cx},{cy - oy // 2} {cx + ox},{cy + oy // 2}"
         elif self.direction == "right":
-            return f"{center_x - offset_x // 2},{center_y - offset_y} {center_x + offset_x // 2},{center_y} {center_x - offset_x // 2},{center_y + offset_y}"
+            return f"{cx - ox // 2},{cy - oy} {cx + ox // 2},{cy} {cx - ox // 2},{cy + oy}"
         elif self.direction == "left":
-            return f"{center_x + offset_x // 2},{center_y - offset_y} {center_x - offset_x // 2},{center_y} {center_x + offset_x // 2},{center_y + offset_y}"
+            return f"{cx + ox // 2},{cy - oy} {cx - ox // 2},{cy} {cx + ox // 2},{cy + oy}"
         else:
             raise ValueError(f"Invalid direction: {self.direction}. Use 'up', 'down', 'left', or 'right'.")
 
     def _get_transform_distance(self) -> float:
-        if self.direction in ["up", "down"]:
-            return float(self.height)
-        else:
-            return float(self.width)
-
-    def _generate_animations(self) -> str:
-        distance = max(self.width, self.height)
-
-        if self.direction == "down":
-            start_transform = f"translateY(-{distance}px)"
-            end_transform = f"translateY({distance}px)"
-        elif self.direction == "up":
-            start_transform = f"translateY({distance}px)"
-            end_transform = f"translateY(-{distance}px)"
-        elif self.direction == "right":
-            start_transform = f"translateX(-{distance}px)"
-            end_transform = f"translateX({distance}px)"
-        elif self.direction == "left":
-            start_transform = f"translateX({distance}px)"
-            end_transform = f"translateX(-{distance}px)"
-
-        return f"""
-        @keyframes spotlight {{
-          0% {{
-            transform: {start_transform};
-          }}
-          100% {{
-            transform: {end_transform};
-          }}
-        }}
-        """
+        return float(self.height if self.direction in ["up", "down"] else self.width)
 
     def _get_unique_id_keys(self) -> list[str]:
-        """Get the list of ID keys that need to be made unique for this generator."""
         return [
             "arrowClip",
-            "spotlightGradient", 
-            "arrow",
-            "spotlight"
+            # old gradient id from previous versions (kept for safety)
+            "spotlightGradient",
+            # new ids for mask-based sweep
+            "maskGrad",
+            "sweepMask",
         ]
 
 
@@ -243,16 +238,18 @@ if __name__ == "__main__":
     generator.save_to_file("_tmp/spotlight_flow_arrow_default.svg")
 
     configurations = [
-        {"direction": "right", "color": "#3b82f6", "num_arrows": 2, "width": 200, "height": 80,
-         "speed": 100.0, "spotlight_size": 0.3},
-        {"direction": "up", "color": "#ef4444", "num_arrows": 3, "width": 100, "height": 150,
-         "speed": 60.0, "spotlight_size": 0.5, "dim_opacity": 0.1},
-        {"direction": "left", "color": "#10b981", "num_arrows": 4, "width": 180, "height": 60,
-         "speed": 120.0, "spotlight_size": 0.25},
+        {"num_arrows": 2, "direction": "right", "color": "#3b82f6", "width": 200, "height": 80,
+         "speed_in_duration_seconds": 10.0, "speed_in_px_per_second": None, "spotlight_size": 0.25},
+        {"num_arrows": 3, "direction": "up", "color": "#ef4444", "width": 100, "height": 150,
+         "speed_in_duration_seconds": 6.0, "speed_in_px_per_second": None, "spotlight_size": 0.01, "dim_opacity": 0.3},
+        {"num_arrows": 4, "direction": "left", "color": "#10b981", "width": 180, "height": 60,
+         "speed_in_duration_seconds": 3.0, "speed_in_px_per_second": None, "spotlight_size": 0.25},
+        {"num_arrows": 5, "direction": "down", "color": "#ef4444", "width": 100, "height": 150,
+         "speed_in_duration_seconds": 6.0, "speed_in_px_per_second": None, "spotlight_size": 0.01, "dim_opacity": 0.3},
     ]
 
     for config in configurations:
         gen = SpotlightFlowArrowGenerator(**config)
-        file = f"_tmp/spotlight_flow_arrow_{config['direction']}_{config['num_arrows']}.svg"
+        file = f"_tmp/spotlight_flow_arrow_{config['num_arrows']}_{config['direction']}.svg"
         gen.save_to_file(file)
         print(f"Created {file} with {config}")
