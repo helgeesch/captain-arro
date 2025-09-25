@@ -15,6 +15,7 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     Perfect for drawing attention to distribution patterns or highlighting data flow from a central source.
     
     Example:
+
         >>> generator = SpotlightSpreadArrowGenerator(
         ...     direction="horizontal",
         ...     color="#6366f1",
