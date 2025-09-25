@@ -14,6 +14,7 @@ class SpotlightFlowArrowGenerator(AnimatedArrowGeneratorBase):
     creating sophisticated visual indicators.
     
     Example:
+
         >>> generator = SpotlightFlowArrowGenerator(
         ...     direction="right", 
         ...     color="#8b5cf6",

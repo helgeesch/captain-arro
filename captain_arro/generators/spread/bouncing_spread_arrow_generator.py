@@ -14,6 +14,7 @@ class BouncingSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     Perfect for indicating expansion, distribution, or divergent processes.
     
     Example:
+
         >>> generator = BouncingSpreadArrowGenerator(
         ...     direction="horizontal",
         ...     color="#14b8a6",

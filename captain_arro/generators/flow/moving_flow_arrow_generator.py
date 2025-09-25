@@ -11,6 +11,7 @@ class MovingFlowArrowGenerator(AnimatedArrowGeneratorBase):
     Perfect for indicating data flow, navigation direction, or process progression.
     
     Example:
+
         >>> generator = MovingFlowArrowGenerator(direction="right", color="#3b82f6")
         >>> svg_content = generator.generate_svg()
         >>> generator.save_to_file("flow_arrow.svg")
