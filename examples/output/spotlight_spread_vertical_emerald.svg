@@ -1,99 +1,60 @@
 
         <svg width="80" height="250" viewBox="0 0 80 250" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-160775">
+            <clipPath id="arrowClip-1e34ad">
               <rect x="0" y="0" width="80" height="250"/>
             </clipPath>
             
-        <linearGradient id="spotlightGradientTop-160775" x1="0" y1="0" x2="0" y2="250" gradientUnits="userSpaceOnUse">
-          <animateTransform
-            attributeName="gradientTransform"
-            type="translate"
-            values="0 125; 0 -250"
-            dur="7.14s"
-            repeatCount="indefinite"/>
-          <stop offset="0%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="32.5%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="50%" stop-color="#059669" stop-opacity="1"/>
-          <stop offset="67.5%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
+        <linearGradient id="maskGradSpreadA-1e34ad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="black" stop-opacity="0"/>
+          <stop offset="32.5%" stop-color="white" stop-opacity="1"/>
+          <stop offset="67.5%" stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="black" stop-opacity="0"/>
         </linearGradient>
-
-        <linearGradient id="spotlightGradientBottom-160775" x1="0" y1="-250" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-          <animateTransform
-            attributeName="gradientTransform"
-            type="translate"
-            values="0 -125; 0 250"
-            dur="7.14s"
-            repeatCount="indefinite"/>
-          <stop offset="0%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="32.5%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="50%" stop-color="#059669" stop-opacity="1"/>
-          <stop offset="67.5%" stop-color="#059669" stop-opacity="0.1"/>
-          <stop offset="100%" stop-color="#059669" stop-opacity="0.1"/>
+        <linearGradient id="maskGradSpreadB-1e34ad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="black" stop-opacity="0"/>
+          <stop offset="32.5%" stop-color="white" stop-opacity="1"/>
+          <stop offset="67.5%" stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="black" stop-opacity="0"/>
         </linearGradient>
+        <mask id="sweepMaskA-1e34ad" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="250">
+          <rect class="sweep-rect-a" x="-40.00" y="25.00" width="160.00" height="200.00" fill="url(#maskGradSpreadA-1e34ad)"/>
+        </mask>
+        <mask id="sweepMaskB-1e34ad" maskUnits="userSpaceOnUse" x="0" y="0" width="80" height="250">
+          <rect class="sweep-rect-b" x="-40.00" y="25.00" width="160.00" height="200.00" fill="url(#maskGradSpreadB-1e34ad)"/>
+        </mask>
+        
           </defs>
-
           <style>
-            .arrow-left-160775 {
-              stroke: url(#spotlightGradientLeft-160775);
-              stroke-width: 10;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }
-
-            .arrow-right-160775 {
-              stroke: url(#spotlightGradientRight-160775);
-              stroke-width: 10;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }
-
-            .arrow-top-160775 {
-              stroke: url(#spotlightGradientTop-160775);
-              stroke-width: 10;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }
-
-            .arrow-bottom-160775 {
-              stroke: url(#spotlightGradientBottom-160775);
-              stroke-width: 10;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }
             
-            
+        .arrow-dim polyline {
+          stroke: #059669;
+          stroke-opacity: 0.1;
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }
+        .arrow-hi-a polyline,
+        .arrow-hi-b polyline {
+          stroke: #059669;
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }
+        .arrow-hi-a polyline { mask: url(#sweepMaskA-1e34ad); }
+        .arrow-hi-b polyline { mask: url(#sweepMaskB-1e34ad); }
+        @keyframes sweepA { 0% { transform: translateY(0px); } 100% { transform: translateY(-225.00px); } }
+        @keyframes sweepB { 0% { transform: translateY(0px); } 100% { transform: translateY(225.00px); } }
+        .sweep-rect-a { animation: sweepA 7.14s linear infinite; transform-box: fill-box; transform-origin: center; }
+        .sweep-rect-b { animation: sweepB 7.14s linear infinite; transform-box: fill-box; transform-origin: center; }
+        
           </style>
-
-          <g clip-path="url(#arrowClip-160775)">
-                <g class="arrow-top-160775" style="transform: translate(40px, 89px)">
-      <polyline points="-32,16 0,-16 32,16"/>
-    </g>
-    
-    <g class="arrow-top-160775" style="transform: translate(40px, 56px)">
-      <polyline points="-32,16 0,-16 32,16"/>
-    </g>
-    
-    <g class="arrow-top-160775" style="transform: translate(40px, 23px)">
-      <polyline points="-32,16 0,-16 32,16"/>
-    </g>
-    
-    <g class="arrow-bottom-160775" style="transform: translate(40px, 161px)">
-      <polyline points="-32,-16 0,16 32,-16"/>
-    </g>
-    
-    <g class="arrow-bottom-160775" style="transform: translate(40px, 194px)">
-      <polyline points="-32,-16 0,16 32,-16"/>
-    </g>
-    
-    <g class="arrow-bottom-160775" style="transform: translate(40px, 227px)">
-      <polyline points="-32,-16 0,16 32,-16"/>
-    </g>
+          <g clip-path="url(#arrowClip-1e34ad)">
+            <g class="arrow-dim"><g transform="translate(40,89)"><polyline points="-32,16 0,-16 32,16"/></g><g transform="translate(40,56)"><polyline points="-32,16 0,-16 32,16"/></g><g transform="translate(40,23)"><polyline points="-32,16 0,-16 32,16"/></g><g transform="translate(40,161)"><polyline points="-32,-16 0,16 32,-16"/></g><g transform="translate(40,194)"><polyline points="-32,-16 0,16 32,-16"/></g><g transform="translate(40,227)"><polyline points="-32,-16 0,16 32,-16"/></g></g>
+            <g class="arrow-hi-a"><g transform="translate(40,89)"><polyline points="-32,16 0,-16 32,16"/></g><g transform="translate(40,56)"><polyline points="-32,16 0,-16 32,16"/></g><g transform="translate(40,23)"><polyline points="-32,16 0,-16 32,16"/></g></g>
+            <g class="arrow-hi-b"><g transform="translate(40,161)"><polyline points="-32,-16 0,16 32,-16"/></g><g transform="translate(40,194)"><polyline points="-32,-16 0,16 32,-16"/></g><g transform="translate(40,227)"><polyline points="-32,-16 0,16 32,-16"/></g></g>
           </g>
         </svg>
         

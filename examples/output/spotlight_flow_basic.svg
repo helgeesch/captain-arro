@@ -1,60 +1,59 @@
 
         <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-91d518">
+            <clipPath id="arrowClip-dd2b95">
               <rect x="0" y="0" width="100" height="100"/>
             </clipPath>
             
-        <linearGradient id="spotlightGradient-91d518" x1="0" y1="0" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-          <animateTransform
-            attributeName="gradientTransform"
-            type="translate"
-            from="-100 0"
-            to="50.0 0"
-            dur="5.00s"
-            repeatCount="indefinite"/>
-          <stop offset="0%" stop-color="#2563eb" stop-opacity="0.2"/>
-          <stop offset="35.0%" stop-color="#2563eb" stop-opacity="0.2"/>
-          <stop offset="50%" stop-color="#2563eb" stop-opacity="1"/>
-          <stop offset="65.0%" stop-color="#2563eb" stop-opacity="0.2"/>
-          <stop offset="100%" stop-color="#2563eb" stop-opacity="0.2"/>
+        <linearGradient id="maskGrad-dd2b95" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="black" stop-opacity="0"/>
+          <stop offset="35.0%" stop-color="white" stop-opacity="1"/>
+          <stop offset="65.0%" stop-color="white" stop-opacity="1"/>
+          <stop offset="100%" stop-color="black" stop-opacity="0"/>
         </linearGradient>
+        <mask id="sweepMask-dd2b95" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
+          <rect class="sweep-rect" x="10.00" y="-50.00" width="80.00" height="200.00" fill="url(#maskGrad-dd2b95)"/>
+        </mask>
         
           </defs>
-        
+
           <style>
-            .arrow-91d518 {
-              stroke: url(#spotlightGradient-91d518);
-              stroke-width: 10;
-              stroke-linecap: round;
-              stroke-linejoin: round;
-              fill: none;
-            }
             
-            
-        @keyframes spotlight-91d518 {
-          0% {
-            transform: translateX(-100px);
-          }
-          100% {
-            transform: translateX(100px);
-          }
+        .arrow-dim polyline {
+          stroke: #2563eb;
+          stroke-opacity: 0.2;
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }
+        .arrow-hi polyline {
+          stroke: #2563eb;
+          stroke-width: 10;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+          mask: url(#sweepMask-dd2b95);
+        }
+        @keyframes sweep {
+          0% { transform: translateX(-90.00px); }
+          100% { transform: translateX(90.00px); }
+        }
+        .sweep-rect {
+          animation: sweep 5.00s linear infinite;
+          transform-box: fill-box;
+          transform-origin: center;
         }
         
           </style>
-        
-          <g clip-path="url(#arrowClip-91d518)">
-                <g class="arrow-91d518">
-      <polyline points="23,25 47,50 23,75"/>
-    </g>
-    
-    <g class="arrow-91d518">
-      <polyline points="38,25 62,50 38,75"/>
-    </g>
-    
-    <g class="arrow-91d518">
-      <polyline points="53,25 77,50 53,75"/>
-    </g>
+
+          <g clip-path="url(#arrowClip-dd2b95)">
+            <g class="arrow-dim">
+          <polyline points="23,25 47,50 23,75"/> <polyline points="38,25 62,50 38,75"/> <polyline points="53,25 77,50 53,75"/>
+        </g>
+        <g class="arrow-hi">
+          <polyline points="23,25 47,50 23,75"/> <polyline points="38,25 62,50 38,75"/> <polyline points="53,25 77,50 53,75"/>
+        </g>
           </g>
         </svg>
         

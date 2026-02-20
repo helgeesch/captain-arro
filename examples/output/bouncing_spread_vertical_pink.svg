@@ -1,13 +1,13 @@
 
         <svg width="100" height="200" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-881a0e">
+            <clipPath id="arrowClip-5745a3">
               <rect x="0" y="0" width="100" height="200"/>
             </clipPath>
           </defs>
 
           <style>
-            .arrow-881a0e {
+            .arrow-5745a3 {
               stroke: #ec4899;
               stroke-width: 4;
               stroke-linecap: round;
@@ -15,36 +15,36 @@
               fill: none;
             }
 
-            .group-left-881a0e {
-              animation: moveLeft-881a0e 1.12s ease infinite alternate;
+            .group-left-5745a3 {
+              animation: moveLeft-5745a3 1.12s ease infinite alternate;
             }
 
-            .group-right-881a0e {
-              animation: moveRight-881a0e 1.12s ease infinite alternate;
+            .group-right-5745a3 {
+              animation: moveRight-5745a3 1.12s ease infinite alternate;
             }
 
-            .group-top-881a0e {
-              animation: moveTop-881a0e 1.12s ease infinite alternate;
+            .group-top-5745a3 {
+              animation: moveTop-5745a3 1.12s ease infinite alternate;
             }
 
-            .group-bottom-881a0e {
-              animation: moveBottom-881a0e 1.12s ease infinite alternate;
+            .group-bottom-5745a3 {
+              animation: moveBottom-5745a3 1.12s ease infinite alternate;
             }
 
             
-        @keyframes moveTop-881a0e {
+        @keyframes moveTop-5745a3 {
           0% { transform: translateY(0px); }
           100% { transform: translateY(22.5px); }
         }
 
-        @keyframes moveBottom-881a0e {
+        @keyframes moveBottom-5745a3 {
           0% { transform: translateY(0px); }
           100% { transform: translateY(-22.5px); }
         }
           </style>
 
-          <g clip-path="url(#arrowClip-881a0e)">
-            <g class="arrow-881a0e group-top-881a0e">
+          <g clip-path="url(#arrowClip-5745a3)">
+            <g class="arrow-5745a3 group-top-5745a3">
       <g style="transform: translate(50px, 62px)">
         <polyline points="-40,20 0,-20 40,20"/>
       </g>
@@ -53,7 +53,7 @@
       </g>
     </g>
     
-    <g class="arrow-881a0e group-bottom-881a0e">
+    <g class="arrow-5745a3 group-bottom-5745a3">
       <g style="transform: translate(50px, 138px)">
         <polyline points="-40,-20 0,20 40,-20"/>
       </g>

@@ -1,13 +1,13 @@
 
         <svg width="250" height="100" viewBox="0 0 250 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-89d5da">
+            <clipPath id="arrowClip-ccfa54">
               <rect x="0" y="0" width="250" height="100"/>
             </clipPath>
           </defs>
 
           <style>
-            .arrow-89d5da {
+            .arrow-ccfa54 {
               stroke: #14b8a6;
               stroke-width: 10;
               stroke-linecap: round;
@@ -15,36 +15,36 @@
               fill: none;
             }
 
-            .group-left-89d5da {
-              animation: moveLeft-89d5da 1.88s ease-in-out infinite alternate;
+            .group-left-ccfa54 {
+              animation: moveLeft-ccfa54 1.88s ease-in-out infinite alternate;
             }
 
-            .group-right-89d5da {
-              animation: moveRight-89d5da 1.88s ease-in-out infinite alternate;
+            .group-right-ccfa54 {
+              animation: moveRight-ccfa54 1.88s ease-in-out infinite alternate;
             }
 
-            .group-top-89d5da {
-              animation: moveTop-89d5da 1.88s ease-in-out infinite alternate;
+            .group-top-ccfa54 {
+              animation: moveTop-ccfa54 1.88s ease-in-out infinite alternate;
             }
 
-            .group-bottom-89d5da {
-              animation: moveBottom-89d5da 1.88s ease-in-out infinite alternate;
+            .group-bottom-ccfa54 {
+              animation: moveBottom-ccfa54 1.88s ease-in-out infinite alternate;
             }
 
             
-        @keyframes moveLeft-89d5da {
+        @keyframes moveLeft-ccfa54 {
           0% { transform: translateX(0px); }
           100% { transform: translateX(28.2px); }
         }
 
-        @keyframes moveRight-89d5da {
+        @keyframes moveRight-ccfa54 {
           0% { transform: translateX(0px); }
           100% { transform: translateX(-28.2px); }
         }
           </style>
 
-          <g clip-path="url(#arrowClip-89d5da)">
-            <g class="arrow-89d5da group-left-89d5da">
+          <g clip-path="url(#arrowClip-ccfa54)">
+            <g class="arrow-ccfa54 group-left-ccfa54">
       <g style="transform: translate(72px, 50px)">
         <polyline points="21,-40 -21,0 21,40"/>
       </g>
@@ -53,7 +53,7 @@
       </g>
     </g>
     
-    <g class="arrow-89d5da group-right-89d5da">
+    <g class="arrow-ccfa54 group-right-ccfa54">
       <g style="transform: translate(178px, 50px)">
         <polyline points="-21,-40 21,0 -21,40"/>
       </g>

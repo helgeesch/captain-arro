@@ -84,7 +84,7 @@ class SpotlightSpreadArrowGenerator(AnimatedArrowGeneratorBase):
     def _axis(self) -> str:
         return "x" if self.direction == "horizontal" else "y"
 
-    def _rect_dims(self) -> Tuple[float, float]:
+    def _rect_dims(self) -> tuple[float, float]:
         if self._axis() == "x":
             w = self.width * (0.6 + 0.4 * max(0.0, self.spotlight_path_extension_factor))
             h = self.height * 2.0

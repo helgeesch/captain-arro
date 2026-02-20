@@ -1,13 +1,13 @@
 
         <svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-068d81">
+            <clipPath id="arrowClip-fb30ed">
               <rect x="0" y="0" width="400" height="200"/>
             </clipPath>
           </defs>
 
           <style>
-            .arrow-068d81 {
+            .arrow-fb30ed {
               stroke: red;
               stroke-width: 8;
               stroke-linecap: round;
@@ -15,36 +15,36 @@
               fill: none;
             }
 
-            .group-left-068d81 {
-              animation: moveLeft-068d81 2.25s ease infinite alternate;
+            .group-left-fb30ed {
+              animation: moveLeft-fb30ed 2.25s ease infinite alternate;
             }
 
-            .group-right-068d81 {
-              animation: moveRight-068d81 2.25s ease infinite alternate;
+            .group-right-fb30ed {
+              animation: moveRight-fb30ed 2.25s ease infinite alternate;
             }
 
-            .group-top-068d81 {
-              animation: moveTop-068d81 2.25s ease infinite alternate;
+            .group-top-fb30ed {
+              animation: moveTop-fb30ed 2.25s ease infinite alternate;
             }
 
-            .group-bottom-068d81 {
-              animation: moveBottom-068d81 2.25s ease infinite alternate;
+            .group-bottom-fb30ed {
+              animation: moveBottom-fb30ed 2.25s ease infinite alternate;
             }
 
             
-        @keyframes moveLeft-068d81 {
+        @keyframes moveLeft-fb30ed {
           0% { transform: translateX(0px); }
           100% { transform: translateX(45.0px); }
         }
 
-        @keyframes moveRight-068d81 {
+        @keyframes moveRight-fb30ed {
           0% { transform: translateX(0px); }
           100% { transform: translateX(-45.0px); }
         }
           </style>
 
-          <g clip-path="url(#arrowClip-068d81)">
-            <g class="arrow-068d81 group-left-068d81">
+          <g clip-path="url(#arrowClip-fb30ed)">
+            <g class="arrow-fb30ed group-left-fb30ed">
       <g style="transform: translate(109px, 100px)">
         <polyline points="15,-80 -15,0 15,80"/>
       </g>
@@ -59,7 +59,7 @@
       </g>
     </g>
     
-    <g class="arrow-068d81 group-right-068d81">
+    <g class="arrow-fb30ed group-right-fb30ed">
       <g style="transform: translate(291px, 100px)">
         <polyline points="-15,-80 15,0 -15,80"/>
       </g>

@@ -1,14 +1,14 @@
 
         <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-11fadb">
+            <clipPath id="arrowClip-45f2db">
               <rect x="0" y="0" width="100" height="100"/>
             </clipPath>
             
           </defs>
         
           <style>
-            .arrow-11fadb {
+            .arrow-45f2db {
               stroke: #2563eb;
               stroke-width: 15;
               stroke-linecap: round;
@@ -16,24 +16,24 @@
               fill: none;
             }
             
-                .arrow1-11fadb {
-      animation: flow1-11fadb 5.00s ease-in-out infinite;
+                .arrow1-45f2db {
+      animation: flow1-45f2db 5.00s ease-in-out infinite;
     }
     
-    .arrow2-11fadb {
-      animation: flow2-11fadb 5.00s ease-in-out infinite;
+    .arrow2-45f2db {
+      animation: flow2-45f2db 5.00s ease-in-out infinite;
     }
     
-    .arrow3-11fadb {
-      animation: flow3-11fadb 5.00s ease-in-out infinite;
+    .arrow3-45f2db {
+      animation: flow3-45f2db 5.00s ease-in-out infinite;
     }
     
-    .arrow4-11fadb {
-      animation: flow4-11fadb 5.00s ease-in-out infinite;
+    .arrow4-45f2db {
+      animation: flow4-45f2db 5.00s ease-in-out infinite;
     }
             
             
-        @keyframes flow1-11fadb {
+        @keyframes flow1-45f2db {
           0% {
             transform: translateX(-50.0px);
             opacity: 0;
@@ -51,7 +51,7 @@
         }
         
     
-        @keyframes flow2-11fadb {
+        @keyframes flow2-45f2db {
           0% {
             transform: translateX(-50.0px);
             opacity: 0;
@@ -69,7 +69,7 @@
         }
         
     
-        @keyframes flow3-11fadb {
+        @keyframes flow3-45f2db {
           0% {
             transform: translateX(-50.0px);
             opacity: 0;
@@ -87,7 +87,7 @@
         }
         
     
-        @keyframes flow4-11fadb {
+        @keyframes flow4-45f2db {
           0% {
             transform: translateX(-50.0px);
             opacity: 0;
@@ -106,20 +106,20 @@
         
           </style>
         
-          <g clip-path="url(#arrowClip-11fadb)">
-                <g class="arrow-11fadb arrow1-11fadb">
+          <g clip-path="url(#arrowClip-45f2db)">
+                <g class="arrow-45f2db arrow1-45f2db">
       <polyline points="38,25 62,50 38,75"/>
     </g>
     
-    <g class="arrow-11fadb arrow2-11fadb" style="animation-delay: -1.25s;">
+    <g class="arrow-45f2db arrow2-45f2db" style="animation-delay: -1.25s;">
       <polyline points="38,25 62,50 38,75"/>
     </g>
     
-    <g class="arrow-11fadb arrow3-11fadb" style="animation-delay: -2.50s;">
+    <g class="arrow-45f2db arrow3-45f2db" style="animation-delay: -2.50s;">
       <polyline points="38,25 62,50 38,75"/>
     </g>
     
-    <g class="arrow-11fadb arrow4-11fadb" style="animation-delay: -3.75s;">
+    <g class="arrow-45f2db arrow4-45f2db" style="animation-delay: -3.75s;">
       <polyline points="38,25 62,50 38,75"/>
     </g>
           </g>

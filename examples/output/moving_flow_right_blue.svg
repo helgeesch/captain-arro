@@ -1,14 +1,14 @@
 
         <svg width="150" height="100" viewBox="0 0 150 100" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <clipPath id="arrowClip-8d22f4">
+            <clipPath id="arrowClip-335be9">
               <rect x="0" y="0" width="150" height="100"/>
             </clipPath>
             
           </defs>
         
           <style>
-            .arrow-8d22f4 {
+            .arrow-335be9 {
               stroke: #3b82f6;
               stroke-width: 8;
               stroke-linecap: round;
@@ -16,32 +16,32 @@
               fill: none;
             }
             
-                .arrow1-8d22f4 {
-      animation: flow1-8d22f4 6.00s ease-in-out infinite;
+                .arrow1-335be9 {
+      animation: flow1-335be9 6.00s ease-in-out infinite;
     }
     
-    .arrow2-8d22f4 {
-      animation: flow2-8d22f4 6.00s ease-in-out infinite;
+    .arrow2-335be9 {
+      animation: flow2-335be9 6.00s ease-in-out infinite;
     }
     
-    .arrow3-8d22f4 {
-      animation: flow3-8d22f4 6.00s ease-in-out infinite;
+    .arrow3-335be9 {
+      animation: flow3-335be9 6.00s ease-in-out infinite;
     }
     
-    .arrow4-8d22f4 {
-      animation: flow4-8d22f4 6.00s ease-in-out infinite;
+    .arrow4-335be9 {
+      animation: flow4-335be9 6.00s ease-in-out infinite;
     }
     
-    .arrow5-8d22f4 {
-      animation: flow5-8d22f4 6.00s ease-in-out infinite;
+    .arrow5-335be9 {
+      animation: flow5-335be9 6.00s ease-in-out infinite;
     }
     
-    .arrow6-8d22f4 {
-      animation: flow6-8d22f4 6.00s ease-in-out infinite;
+    .arrow6-335be9 {
+      animation: flow6-335be9 6.00s ease-in-out infinite;
     }
             
             
-        @keyframes flow1-8d22f4 {
+        @keyframes flow1-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -59,7 +59,7 @@
         }
         
     
-        @keyframes flow2-8d22f4 {
+        @keyframes flow2-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -77,7 +77,7 @@
         }
         
     
-        @keyframes flow3-8d22f4 {
+        @keyframes flow3-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -95,7 +95,7 @@
         }
         
     
-        @keyframes flow4-8d22f4 {
+        @keyframes flow4-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -113,7 +113,7 @@
         }
         
     
-        @keyframes flow5-8d22f4 {
+        @keyframes flow5-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -131,7 +131,7 @@
         }
         
     
-        @keyframes flow6-8d22f4 {
+        @keyframes flow6-335be9 {
           0% {
             transform: translateX(-75.0px);
             opacity: 0;
@@ -150,28 +150,28 @@
         
           </style>
         
-          <g clip-path="url(#arrowClip-8d22f4)">
-                <g class="arrow-8d22f4 arrow1-8d22f4">
+          <g clip-path="url(#arrowClip-335be9)">
+                <g class="arrow-335be9 arrow1-335be9">
       <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow-8d22f4 arrow2-8d22f4" style="animation-delay: -1.00s;">
+    <g class="arrow-335be9 arrow2-335be9" style="animation-delay: -1.00s;">
       <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow-8d22f4 arrow3-8d22f4" style="animation-delay: -2.00s;">
+    <g class="arrow-335be9 arrow3-335be9" style="animation-delay: -2.00s;">
       <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow-8d22f4 arrow4-8d22f4" style="animation-delay: -3.00s;">
+    <g class="arrow-335be9 arrow4-335be9" style="animation-delay: -3.00s;">
       <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow-8d22f4 arrow5-8d22f4" style="animation-delay: -4.00s;">
+    <g class="arrow-335be9 arrow5-335be9" style="animation-delay: -4.00s;">
       <polyline points="57,25 93,50 57,75"/>
     </g>
     
-    <g class="arrow-8d22f4 arrow6-8d22f4" style="animation-delay: -5.00s;">
+    <g class="arrow-335be9 arrow6-335be9" style="animation-delay: -5.00s;">
       <polyline points="57,25 93,50 57,75"/>
     </g>
           </g>
