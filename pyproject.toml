@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "captain-arro"
-version = "0.1.2"
+version = "0.1.3"
 description = "Animated SVG arrow generators for web interfaces"
 readme = "README.md"
 license = "MIT"
